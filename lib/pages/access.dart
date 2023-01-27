@@ -1,87 +1,96 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/helper.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class AccessPage extends StatefulWidget {
+  const AccessPage({super.key});
   @override
-  HomePageState createState() => HomePageState();
+  AccessPageState createState() => AccessPageState();
 }
 
-class HomePageState extends State<HomePage> {
+class AccessPageState extends State<AccessPage> {
+  bool isConnection = true;
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    bool isConnection = true;
-
     return Scaffold(
-      body: Center(
-        child: Column(
-
-          children: [
-            // Logo
-            FractionallySizedBox(
-              widthFactor: 0.80,
-              child : Padding(
-                padding: EdgeInsets.only(top: 0.1*screenHeight, bottom: 0.05*screenHeight),
-                child: Image.asset(
-                  'images/logo_max.png',
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              // Logo
+              FractionallySizedBox(
+                widthFactor: 0.80,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 0.05*screenHeight, bottom: 0.05*screenHeight),
+                  child: Image.asset(
+                    'images/logo_max.png',
+                  ),
                 ),
               ),
-            ),
 
-            // NavBar
-            Container(
-              padding: EdgeInsets.only(bottom: 0.05*screenHeight),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              // NavBar
+              Container(
+                padding: EdgeInsets.only(bottom: 0.05*screenHeight),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
 
-                children: [
-                  InkWell(
-                    onTap: () => {isConnection = true, print(isConnection)}, // isConnection = true
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 40,
-                      padding: EdgeInsets.only(right: 0.02*screenWidth),
-                      child: Text(
-                        "Connexion",
-                        style: TextStyle(
-                          fontSize: 26,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold,
-                          color: isConnection == true ? Colors.black : Colors.grey,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          isConnection = true;
+                        });
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 40,
+                        padding: EdgeInsets.only(right: 0.02*screenWidth),
+                        child: Text(
+                          "Connexion",
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+                            color: isConnection == true ? Colors.black : Colors.grey,
+                          ),
                         ),
                       ),
                     ),
-                  ),
 
-                  InkWell(
-                    onTap: () => {isConnection = false, print(isConnection)}, // isConnection = false
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 40,
-                      padding: EdgeInsets.only(left: 0.02*screenWidth),
-                      child: Text(
-                        "Inscription",
-                        style: TextStyle(
-                          fontSize: 26,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold,
-                          color: isConnection == true ? Colors.grey : Colors.black,
+                    InkWell(
+                      onTap: () {
+                        setState(() {
+                          isConnection = false;
+                        });
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 40,
+                        padding: EdgeInsets.only(left: 0.02*screenWidth),
+                        child: Text(
+                          "Inscription",
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+                            color: isConnection == true ? Colors.grey : Colors.black,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
 
-            Column(
-                children : isConnection == true ? displayLogin() : displayRegister()
-            ),
-          ],
+              // Form
+              Column(
+                  children : isConnection == true ? displayLogin() : displayRegister()
+              ),
+            ],
+          ),
         ),
       ),
     );

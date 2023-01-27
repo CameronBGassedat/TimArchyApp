@@ -10,12 +10,11 @@ Text makeText(String text, double size, FontWeight fontWt) {
   );
 }
 
-TextField makeTextField(String hintText, Color onFocusBorderColor)
-{
+TextField makeTextField(String hintText, Color onFocusBorderColor) {
   return TextField(
     decoration: InputDecoration(
       hintText: hintText,
-      enabledBorder : OutlineInputBorder(
+      enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),
         borderSide: const BorderSide(width: 2.0),
       ),
