@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/helper.dart';
 
+import '../api/api.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
   @override
@@ -13,6 +15,16 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
+    bool isConnection = true;
+    var body = {
+      "type" : "User",
+      "id" : "1",
+      "name" : "myname",
+      "email" : "myemail"
+    };
+    //getCall('/get_users');
+    postCall('/add', body);
 
     return Scaffold(
       body: SafeArea(
