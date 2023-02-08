@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tim_archy_app/helper.dart';
+import 'package:tim_archy_app/pages/homePages/buildings.dart';
+import 'package:tim_archy_app/pages/homePages/favorites.dart';
+import 'package:tim_archy_app/pages/homePages/scenarios.dart';
+import 'package:tim_archy_app/pages/homePages/sensors.dart';
+import 'package:tim_archy_app/pages/homePages/users.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,7 +13,23 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  int index = 1;
+  int index = 0;
+
+  final List<String> title = [
+    "FAVORIS",
+    "CAPTEURS",
+    "SCENARIOS",
+    "UTIILISATEURS",
+    "BATIMENTS",
+  ];
+
+  final List<Widget> pages = [
+    favoritesContainer(),
+    sensorsContainer(),
+    scenariosContainer(),
+    usersContainer(),
+    buildingsContainer(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +40,9 @@ class HomePageState extends State<HomePage> {
       bottomNavigationBar: NavigationBar(
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         selectedIndex: index,
-        onDestinationSelected: (index) => setState(() => this.index = index),
+        onDestinationSelected: (index) => setState(() => {
+          this.index = index,
+        }),
         destinations: [
           NavigationDestination(
             icon: Image.asset(
@@ -68,19 +91,19 @@ class HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 0.05*screenWidth, top: 0.05*screenWidth, right: 0.05*screenWidth),
+              padding: EdgeInsets.all(0.05*screenWidth),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset("images/logo_min.png", height: 0.06*screenHeight),
                   Container(
                     alignment: Alignment.bottomCenter,
                     height: 0.09*screenHeight,
-                    child: const Text(
-                      "CAPTEURS",
+                    child: Text(
+                      title[index],
                       style: TextStyle(
-                        fontSize: 42,
+                        fontSize: index == 3 ? 40 : 42,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.w900,
                       ),
@@ -91,15 +114,7 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             Container(
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                children: [
-                  Card(
-                    child: Text("Rain"),
-                  ),
-                ],
-              ),
+              child: pages[index],
             )
           ],
         ),
