@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tim_archy_app/helper.dart';
 import 'package:tim_archy_app/pages/accessPages/login.dart';
 import 'package:tim_archy_app/pages/accessPages/register.dart';
 
@@ -18,16 +19,13 @@ class AccessPageState extends State<AccessPage> {
 
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Column(
+        child: Column(
             children: [
-              FractionallySizedBox(
-                widthFactor: 0.80,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 0.05*screenHeight, bottom: 0.05*screenHeight),
-                  child: Image.asset(
-                    'images/logo_max.png',
-                  ),
+              Padding(
+                padding: EdgeInsets.only(top: 0.05*screenHeight, bottom: 0.05*screenHeight),
+                child: Image.asset(
+                  'images/logo_max.png',
+                  width: 0.8*screenWidth,
                 ),
               ),
 
@@ -43,20 +41,7 @@ class AccessPageState extends State<AccessPage> {
                           isConnection = true;
                         });
                       },
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 40,
-                        padding: EdgeInsets.only(right: 0.02*screenWidth),
-                        child: Text(
-                          "Connexion",
-                          style: TextStyle(
-                            color: isConnection == true ? Colors.black : Colors.grey,
-                            fontSize: 26,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                      child: makeNavBarContainer(0.0, 0.02*screenWidth, "Connexion", isConnection == true ? Colors.black : Colors.grey),
                     ),
 
                     InkWell(
@@ -65,20 +50,7 @@ class AccessPageState extends State<AccessPage> {
                           isConnection = false;
                         });
                       },
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 40,
-                        padding: EdgeInsets.only(left: 0.02*screenWidth),
-                        child: Text(
-                          "Inscription",
-                          style: TextStyle(
-                            fontSize: 26,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                            color: isConnection == true ? Colors.grey : Colors.black,
-                          ),
-                        ),
-                      ),
+                      child: makeNavBarContainer(0.02*screenWidth, 0.0, "Inscription", isConnection == true ? Colors.grey : Colors.black),
                     ),
                   ],
                 ),
@@ -89,7 +61,6 @@ class AccessPageState extends State<AccessPage> {
               ),
             ],
           ),
-        ),
       ),
     );
   }

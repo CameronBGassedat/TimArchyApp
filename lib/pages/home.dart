@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tim_archy_app/helper.dart';
 import 'package:tim_archy_app/pages/homePages/buildings.dart';
 import 'package:tim_archy_app/pages/homePages/favorites.dart';
 import 'package:tim_archy_app/pages/homePages/scenarios.dart';
 import 'package:tim_archy_app/pages/homePages/sensors.dart';
 import 'package:tim_archy_app/pages/homePages/users.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,52 +38,16 @@ class HomePageState extends State<HomePage> {
 
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+        height: 0.075*screenHeight,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         selectedIndex: index,
-        onDestinationSelected: (index) => setState(() => {
-          this.index = index,
-        }),
+        onDestinationSelected: (index) => setState(() => {this.index = index}),
         destinations: [
-          NavigationDestination(
-            icon: Image.asset(
-              "images/blank_heart.png",
-              height: 30,
-              color: index == 0 ? Colors.black : Colors.grey,
-            ),
-            label: "Favoris",
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              "images/sensors.png",
-              height: 33,
-              color: index == 1 ? Colors.black : Colors.grey,
-            ),
-            label: "Capteurs",
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              "images/scenarios.png",
-              height: 25,
-              color: index == 2 ? Colors.black : Colors.grey,
-            ),
-            label: "Scenarios",
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              "images/users.png",
-              height: 27,
-              color: index == 3 ? Colors.black : Colors.grey,
-            ),
-            label: "Utilisateurs",
-          ),
-          NavigationDestination(
-            icon: Image.asset(
-              "images/buildings.png",
-              height: 28,
-              color: index == 4 ? Colors.black : Colors.grey,
-            ),
-            label: "Batiments",
-          ),
+          makeIndex("images/blank_heart.png", 30, index == 0 ? Colors.black : Colors.grey, "Favoris"),
+          makeIndex("images/sensors.png", 33, index == 1 ? Colors.black : Colors.grey, "Capteurs"),
+          makeIndex("images/scenarios.png", 25, index == 2 ? Colors.black : Colors.grey, "Scenarios"),
+          makeIndex("images/users.png", 27, index == 3 ? Colors.black : Colors.grey, "Utilisateurs"),
+          makeIndex("images/buildings.png", 30, index == 4 ? Colors.black : Colors.grey, "Batiments"),
         ],
       ),
 
@@ -96,26 +60,25 @@ class HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset("images/logo_min.png", height: 0.06*screenHeight),
+                  Image.asset(
+                    "images/logo_min.png",
+                    height: 0.06*screenHeight
+                  ),
                   Container(
                     alignment: Alignment.bottomCenter,
                     height: 0.09*screenHeight,
-                    child: Text(
-                      title[index],
-                      style: TextStyle(
-                        fontSize: index == 3 ? 40 : 42,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
+                    child: makeText(title[index], Colors.black, index == 3 ? 38 : 42, FontStyle.italic, FontWeight.w900)
                   ),
-                  Image.asset("images/user_menu.png", height: 0.05*screenHeight,),
+                  Image.asset(
+                    "images/user_menu.png",
+                    height: 0.05*screenHeight,
+                  ),
                 ],
               ),
             ),
             Container(
               child: pages[index],
-            )
+            ),
           ],
         ),
       ),

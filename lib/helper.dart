@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-FractionallySizedBox makeTextFieldSizedBox(String txtText, String txtFdHintText)
-{
-  return
-    FractionallySizedBox(
-      widthFactor: 0.8,
-      child: Column(
-        children: [
-          makeText(txtText, Colors.black, 26, FontStyle.normal, FontWeight.bold),
-          makeTextField(txtFdHintText),
-        ],
-      ),
-    );
-}
-
 Text makeText(String text, Color txtColor, double txtSize, FontStyle txtStyle, FontWeight txtWeight)
 {
   return
@@ -25,6 +11,17 @@ Text makeText(String text, Color txtColor, double txtSize, FontStyle txtStyle, F
         fontStyle: txtStyle,
         fontWeight: txtWeight,
       ),
+    );
+}
+
+Container makeNavBarContainer(double navBarPaddingLeft, double navBarPaddingRight, String navBarText, Color navBarTextColor)
+{
+  return
+    Container(
+      alignment: Alignment.center,
+      height: 40,
+      padding: EdgeInsets.only(left: navBarPaddingLeft, right: navBarPaddingRight),
+      child: makeText(navBarText, navBarTextColor, 26, FontStyle.italic, FontWeight.bold)
     );
 }
 
@@ -46,7 +43,22 @@ TextField makeTextField(String hintText)
     );
 }
 
-Container makeCustomButton(Color btnColor, double topLeftRadius, double topRightRadius, double bottomLeftRadius, double bottomRightRadius, String btnText) {
+FractionallySizedBox makeFormSizedBox(String txtText, String txtFdHintText)
+{
+  return
+    FractionallySizedBox(
+      widthFactor: 0.8,
+      child: Column(
+        children: [
+          makeText(txtText, Colors.black, 26, FontStyle.normal, FontWeight.bold),
+          makeTextField(txtFdHintText),
+        ],
+      ),
+    );
+}
+
+Container makeCustomButton(Color btnColor, double topLeftRadius, double topRightRadius, double bottomLeftRadius, double bottomRightRadius, String btnText)
+{
   return
     Container(
       alignment: Alignment.center,
@@ -54,12 +66,24 @@ Container makeCustomButton(Color btnColor, double topLeftRadius, double topRight
       decoration: BoxDecoration(
         color: btnColor,
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(topLeftRadius),
-            topRight: Radius.circular(topRightRadius),
-            bottomLeft: Radius.circular(bottomLeftRadius),
-            bottomRight: Radius.circular(bottomRightRadius),
+          topLeft: Radius.circular(topLeftRadius),
+          topRight: Radius.circular(topRightRadius),
+          bottomLeft: Radius.circular(bottomLeftRadius),
+          bottomRight: Radius.circular(bottomRightRadius),
         ),
       ),
       child: makeText(btnText, Colors.white, 24, FontStyle.normal, FontWeight.bold),
+    );
+}
+
+NavigationDestination makeIndex(String indexText, double indexHeight, Color indexColor, String indexLabel) {
+  return
+    NavigationDestination(
+      icon: Image.asset(
+        indexText,
+        height: indexHeight,
+        color: indexColor,
+      ),
+      label: indexLabel,
     );
 }

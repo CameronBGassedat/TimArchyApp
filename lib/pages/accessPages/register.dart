@@ -4,11 +4,11 @@ import 'package:tim_archy_app/helper.dart';
 List<Widget> displayRegister()
 {
   return [
-    makeTextFieldSizedBox("Nom d'utilisateur", "Entrer votre nom d'utilisateur"),
+    makeFormSizedBox("Nom d'utilisateur", "Entrer votre nom d'utilisateur"),
 
-    makeTextFieldSizedBox("Adresse email", "Enter votre mot de passe"),
+    makeFormSizedBox("Adresse email", "Enter votre mot de passe"),
 
-    makeTextFieldSizedBox("Enter votre adresse email", "Enter votre mot de passe"),
+    makeFormSizedBox("Enter votre adresse email", "Enter votre mot de passe"),
 
     FractionallySizedBox(
       widthFactor: 0.55,
