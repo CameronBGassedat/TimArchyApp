@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/helper.dart';
-import 'package:tim_archy_app/pages/homePages/buildings.dart';
-import 'package:tim_archy_app/pages/homePages/favorites.dart';
-import 'package:tim_archy_app/pages/homePages/scenarios.dart';
-import 'package:tim_archy_app/pages/homePages/sensors.dart';
-import 'package:tim_archy_app/pages/homePages/users.dart';
-
-import '../api/api.dart';
+import 'homePages/buildings.dart';
+import 'homePages/favorites.dart';
+import 'homePages/scenarios.dart';
+import 'homePages/sensors.dart';
+import 'homePages/users.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,15 +37,15 @@ class HomePageState extends State<HomePage> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     bool isConnection = true;
-    var body = {
+    /*var body = {
       "type" : "User",
       "id" : "1",
       "name" : "myname",
       "email" : "myemail"
     };
-    //getCall('/get_users');
+    getCall('/get_users');
     postCall('/add', body);
-
+    */
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         height: 0.075*screenHeight,

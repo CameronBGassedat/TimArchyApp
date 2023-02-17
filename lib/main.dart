@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tim_archy_app/pages/access.dart';
-import 'package:tim_archy_app/pages/home.dart';
+import 'package:tim_archy_app/UI/Screens/access.dart';
+import 'package:tim_archy_app/UI/Screens/home.dart';
 
 void main() {
   runApp(const MyApp());

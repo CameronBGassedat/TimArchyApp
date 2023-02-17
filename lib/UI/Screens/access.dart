@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/helper.dart';
-import 'package:tim_archy_app/pages/accessPages/login.dart';
-import 'package:tim_archy_app/pages/accessPages/register.dart';
+import 'package:tim_archy_app/UI/Screens/accessPages/login.dart';
+import 'package:tim_archy_app/UI/Screens/accessPages/register.dart';
 
 class AccessPage extends StatefulWidget {
   const AccessPage({super.key});
