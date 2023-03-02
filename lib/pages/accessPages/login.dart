@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/helper.dart';
+import 'package:tim_archy_app/pages/home.dart';
 
-List<Widget> displayLogin()
+List<Widget> displayLogin(BuildContext context)
 {
   return [
     makeFormSizedBox("Nom d'utilisateur", "Entrer votre nom d'utilisateur"),
@@ -11,7 +12,9 @@ List<Widget> displayLogin()
     FractionallySizedBox(
       widthFactor: 0.55,
       child: InkWell(
-        onTap: () => print("Hello Connexion"),
+        onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(builder : (context) => HomePage())
+        ),
         child: makeCustomButton(Color(0xFF235784), 25.0, 5.0, 5.0, 25.0, "CONNEXION"),
       ),
     ),

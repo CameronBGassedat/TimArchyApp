@@ -57,7 +57,7 @@ class AccessPageState extends State<AccessPage> {
               ),
 
               Column(
-                  children : isConnection == true ? displayLogin() : displayRegister()
+                  children : isConnection == true ? displayLogin(context) : displayRegister(context)
               ),
             ],
           ),

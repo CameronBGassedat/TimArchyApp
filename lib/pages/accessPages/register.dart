@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/helper.dart';
+import 'package:tim_archy_app/pages/home.dart';
 
-List<Widget> displayRegister()
+List<Widget> displayRegister(BuildContext context)
 {
   return [
     makeFormSizedBox("Nom d'utilisateur", "Entrer votre nom d'utilisateur"),
@@ -13,7 +14,9 @@ List<Widget> displayRegister()
     FractionallySizedBox(
       widthFactor: 0.55,
       child: InkWell(
-        onTap: () => print("Hello Inscription"),
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(builder : (context) => HomePage())
+        ),
         child: makeCustomButton(Color(0xFF40A8C4), 5.0, 25.0, 25.0, 5.0, "INSCRIPTION"),
       ),
     ),
