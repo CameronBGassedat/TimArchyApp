@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/helper.dart';
-import 'package:tim_archy_app/pages/homePages/buildings.dart';
-import 'package:tim_archy_app/pages/homePages/favorites.dart';
-import 'package:tim_archy_app/pages/homePages/scenarios.dart';
-import 'package:tim_archy_app/pages/homePages/sensors.dart';
-import 'package:tim_archy_app/pages/homePages/users.dart';
+import '../../BusinessLogic/AirluxBloc.dart';
+import 'homePages/buildings.dart';
+import 'homePages/favorites.dart';
+import 'homePages/scenarios.dart';
+import 'homePages/sensors.dart';
+import 'homePages/users.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,7 +15,8 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int index = 0;
-
+  late AirluxBloc airluxBloc;
+  late List<Widget> pages = [];
   final List<String> title = [
     "FAVORIS",
     "CAPTEURS",
@@ -23,19 +25,25 @@ class HomePageState extends State<HomePage> {
     "BATIMENTS",
   ];
 
-  final List<Widget> pages = [
-    favoritesContainer(),
-    sensorsContainer(),
-    scenariosContainer(),
-    usersContainer(),
-    buildingsContainer(),
-  ];
+  @override
+  void initState() {
+    airluxBloc = AirluxBloc();
+    pages = [
+      favoritesContainer(),
+      sensorsContainer(airluxBloc),
+      scenariosContainer(),
+      usersContainer(),
+      buildingsContainer(),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
+    bool isConnection = true;
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         height: 0.075*screenHeight,
