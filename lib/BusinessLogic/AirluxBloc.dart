@@ -32,7 +32,6 @@ class AirluxBloc {
   Future<void> loadSensors()
   async {
     _sensors = await _repository.getAllSensors();
-    print(_sensors[0].name);
     _sensorsSubject.add(_sensors);
   }
 

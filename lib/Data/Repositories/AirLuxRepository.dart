@@ -16,37 +16,45 @@ class AirluxRepository {
 
   Future<List<Building>> getAllBuildings()
   async {
-    var response = await api.getCall(api.routeQueries["Building"]!);
-    //var buildings = Building(response.data.id, name, clientsID, roomsID)
-    var buildings = null;
+    var responseBody = await api.getCall(api.routeQueries["Building"]!);
+    List jsonResponse = jsonDecode(responseBody);
+
+    var buildings = jsonResponse.map(
+            (item) => Building.fromJson(item)
+    ).toList();
     return buildings;
   }
 
   Future<List<Sensor>> getAllSensors()
   async {
     var responseBody = await api.getCall(api.routeQueries["Sensor"]!);
-    print("Response$responseBody");
     List jsonResponse = jsonDecode(responseBody);
 
-    var sensorList = jsonResponse.map(
+    var sensors = jsonResponse.map(
             (item) => Sensor.fromJson(item)
     ).toList();
-    return sensorList;
+    return sensors;
   }
 
   Future<List<Room>> getAllRooms()
   async {
-    var response = await api.getCall(api.routeQueries["Room"]!);
-    //var rooms = Building(response.data.id, name, clientsID, roomsID)
-    var rooms = null;
+    var responseBody = await api.getCall(api.routeQueries["Room"]!);
+    List jsonResponse = jsonDecode(responseBody);
+
+    var rooms = jsonResponse.map(
+            (item) => Room.fromJson(item)
+    ).toList();
     return rooms;
   }
 
   Future<List<User>> getAllUsers()
   async {
-    var response = await api.getCall(api.routeQueries["User"]!);
-    //var users = Building(response.data.id, name, clientsID, roomsID)
-    var users = null;
+    var responseBody = await api.getCall(api.routeQueries["User"]!);
+    List jsonResponse = jsonDecode(responseBody);
+
+    var users = jsonResponse.map(
+            (item) => User.fromJson(item)
+    ).toList();
     return users;
   }
 }

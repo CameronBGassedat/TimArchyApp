@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tim_archy_app/helper.dart';
+import 'package:tim_archy_app/UI/Helpers/helper.dart';
 import '../home.dart';
 
 Widget displayRegister(BuildContext context)
