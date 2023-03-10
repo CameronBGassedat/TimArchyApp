@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/helper.dart';
+import '../../BusinessLogic/AirluxBloc.dart';
 import 'homePages/buildings.dart';
 import 'homePages/favorites.dart';
 import 'homePages/scenarios.dart';
@@ -14,7 +15,8 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int index = 0;
-
+  late AirluxBloc airluxBloc;
+  late List<Widget> pages = [];
   final List<String> title = [
     "FAVORIS",
     "CAPTEURS",
@@ -23,13 +25,18 @@ class HomePageState extends State<HomePage> {
     "BATIMENTS",
   ];
 
-  final List<Widget> pages = [
-    favoritesContainer(),
-    sensorsContainer(),
-    scenariosContainer(),
-    usersContainer(),
-    buildingsContainer(),
-  ];
+  @override
+  void initState() {
+    airluxBloc = AirluxBloc();
+    pages = [
+      favoritesContainer(),
+      sensorsContainer(airluxBloc),
+      scenariosContainer(),
+      usersContainer(),
+      buildingsContainer(),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +44,6 @@ class HomePageState extends State<HomePage> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     bool isConnection = true;
-    /*var body = {
-      "type" : "User",
-      "id" : "1",
-      "name" : "myname",
-      "email" : "myemail"
-    };
-    getCall('/get_users');
-    postCall('/add', body);
-    */
     return Scaffold(
       bottomNavigationBar: NavigationBar(
         height: 0.075*screenHeight,

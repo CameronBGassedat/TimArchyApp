@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../BusinessLogic/AirluxBloc.dart';
+import '../../../Data/Models/SensorModel.dart';
 
-ListView sensorsContainer() {
+Widget sensorsContainer(AirluxBloc airluxBloc) {
   return
-    ListView(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      children: [
-        Card(
-          child: Text("Rain"),
-        ),
-      ],
-    );
+    airluxBloc.buildSensorsListView();
 }

@@ -3,7 +3,6 @@ import 'package:tim_archy_app/Data/Repositories/AirLuxRepository.dart';
 import 'package:tim_archy_app/helper.dart';
 import 'package:tim_archy_app/UI/Screens/accessPages/login.dart';
 import 'package:tim_archy_app/UI/Screens/accessPages/register.dart';
-
 import '../../BusinessLogic/AirluxBloc.dart';
 
 class AccessPage extends StatefulWidget {
@@ -28,8 +27,7 @@ class AccessPageState extends State<AccessPage> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     // TESTING
-    airluxBloc.LoadSensors();
-    //print("Sensors caught in front : ${airluxBloc.sensors[0].name}");
+    //airluxBloc.LoadSensors();
 
     return Scaffold(
       body: SafeArea(
