@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Center usersContainer() {
+Widget usersContainer() {
   return
     Center(
       child: Text('Page 4'),

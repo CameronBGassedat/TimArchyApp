@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Center favoritesContainer() {
+Widget favoritesContainer() {
   return
     Center(
       child: Text('Page 1'),

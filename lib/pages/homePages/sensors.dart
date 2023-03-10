@@ -2,17 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 /* ========= TEMPORARY =========== */
-int setId = 0;
-idSensor(){
-  int id = setId +1;
-  return id;
-}
-
-String getName = randomName();
+String name = "";
 randomName(){
   var random = Random();
   var sensorList = ["Portail", "Porte", "Volet", "Lumière", "Intensité Lumineuse", "Température", "Humidité"];
-  var name = sensorList[random.nextInt(sensorList.length)];
+  name = sensorList[random.nextInt(sensorList.length)];
   return name;
 }
 
@@ -28,7 +22,7 @@ double randomDouble() {
   return doubleData;
 }
 randomData(){
-  switch (getName){
+  switch (name){
     case "Portail" :
     case "Porte" :
     case "Volet" :
@@ -52,50 +46,46 @@ randomRoomId(){
   var roomID = random.nextInt(10);
   return roomID;
 }
-/* ========= TEMPORARY =========== */
 
-// Liste
+/* ========= TEMPORARY =========== */
 class Sensor {
-  int id;
+  //int id;
   String name;
   String data;
   int roomID;
 
-  Sensor(this.id, this.name, this.data, this.roomID);
+  Sensor(/*this.id,*/ this.name, this.data, this.roomID);
 }
 
-List<Sensor> buildTemporarySensorList(){
+List<Sensor> sensorList(){
   var sensorList = <Sensor>[];
-    sensorList.add(Sensor(idSensor(), getName, randomData(), randomRoomId()));
-    sensorList.add(Sensor(idSensor(), getName, randomData(), randomRoomId()));
-    sensorList.add(Sensor(idSensor(), getName, randomData(), randomRoomId()));
-    sensorList.add(Sensor(idSensor(), getName, randomData(), randomRoomId()));
+  for (int i = 0; i < 10; i++) {
+    sensorList.add(Sensor(randomName(), randomData(), randomRoomId()));
+  }
   return sensorList;
 }
 
 Widget sensorsContainer() {
   return
     Flexible(
-      child: Container(
-        child: ListView.builder(
-          scrollDirection: Axis.vertical,
-          itemCount: buildTemporarySensorList().length,
-          itemBuilder: (BuildContext context, int index){
-            Sensor sensor = buildTemporarySensorList()[index];
-            return
-              Card(
-                elevation: 5,
-                child: Column(
-                  children : [
-                    Text("ID : ${sensor.id}"),
-                    Text("Sensor Type : ${sensor.name}"),
-                    Text("Value : ${sensor.data}"),
-                    Text("RoomID : ${sensor.roomID}"),
-                  ]
-                ),
-              );
-          },
-        ),
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: sensorList().length,
+        itemBuilder: (BuildContext context, int index){
+          Sensor sensor = sensorList()[index];
+          return
+            Card(
+              elevation: 5,
+              child: Column(
+                children : [
+                  Text("ID : ${index+1}"), //${sensor.id}
+                  Text("Sensor Type : ${sensor.name}"),
+                  Text("Value : ${sensor.data}"),
+                  Text("RoomID : ${sensor.roomID}"),
+                ]
+              ),
+            );
+        },
       ),
     );
 }
