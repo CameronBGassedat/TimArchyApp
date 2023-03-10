@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tim_archy_app/Data/Repositories/AirLuxRepository.dart';
 import 'package:tim_archy_app/helper.dart';
 import 'package:tim_archy_app/UI/Screens/accessPages/login.dart';
 import 'package:tim_archy_app/UI/Screens/accessPages/register.dart';
+
+import '../../BusinessLogic/AirluxBloc.dart';
 
 class AccessPage extends StatefulWidget {
   const AccessPage({super.key});
@@ -11,11 +14,22 @@ class AccessPage extends StatefulWidget {
 
 class AccessPageState extends State<AccessPage> {
   bool isConnection = true;
+  late AirluxBloc airluxBloc;
+
+  @override
+  void initState() {
+    airluxBloc = AirluxBloc();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
+    // TESTING
+    airluxBloc.LoadSensors();
+    //print("Sensors caught in front : ${airluxBloc.sensors[0].name}");
 
     return Scaffold(
       body: SafeArea(
