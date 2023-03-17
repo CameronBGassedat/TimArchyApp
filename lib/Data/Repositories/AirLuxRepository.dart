@@ -57,4 +57,15 @@ class AirluxRepository {
     ).toList();
     return users;
   }
+
+  Future<List<User>> getSingleUsers()
+  async {
+    var responseBody = await api.getCall(api.routeQueries["User"]!);
+    List jsonResponse = jsonDecode(responseBody);
+
+    var users = jsonResponse.map(
+            (item) => User.fromJson(item)
+    ).toList();
+    return users;
+  }
 }

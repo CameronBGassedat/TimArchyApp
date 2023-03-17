@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tim_archy_app/UI/Helpers/helper.dart';
 import 'package:tim_archy_app/UI/Screens/accessPages/login.dart';
 import 'package:tim_archy_app/UI/Screens/accessPages/register.dart';
-import '../../BusinessLogic/AirluxBloc.dart';
+import 'package:tim_archy_app/BusinessLogic/AirluxBloc.dart';
 
 class AccessPage extends StatefulWidget {
   const AccessPage({super.key});
@@ -17,6 +17,7 @@ class AccessPageState extends State<AccessPage> {
   @override
   void initState() {
     airluxBloc = AirluxBloc();
+    airluxBloc.loadUsers();
     super.initState();
   }
 

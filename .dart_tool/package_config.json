@@ -50,6 +50,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/ffi-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "file",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/file-6.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/tools/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -70,6 +82,12 @@
     {
       "name": "flutter_test",
       "rootUri": "file:///C:/tools/flutter/packages/flutter_test",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///C:/tools/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -128,6 +146,42 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "path_provider_linux",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_linux-0.0.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_platform_interface-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-0.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.11"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "process",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/process-4.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "provider",
       "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.0.5",
       "packageUri": "lib/",
@@ -138,6 +192,42 @@
       "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/rxdart-0.27.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "shared_preferences",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-0.5.12+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_linux",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_linux-0.0.2+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_macos",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_macos-0.0.1+11",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_platform_interface",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_platform_interface-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_web",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_web-0.1.2+7",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_windows",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_windows-0.0.2+3",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "sky_engine",
@@ -194,13 +284,25 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "win32",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/win32-2.6.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "xdg_directories",
+      "rootUri": "file:///C:/Users/Cameron%20Gassedat/AppData/Local/Pub/Cache/hosted/pub.dev/xdg_directories-0.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "tim_archy_app",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-03-10T12:55:52.188358Z",
+  "generated": "2023-03-16T09:59:52.837750Z",
   "generator": "pub",
   "generatorVersion": "2.19.0"
 }
