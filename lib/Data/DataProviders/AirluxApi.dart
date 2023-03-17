@@ -44,7 +44,7 @@ class AirluxApi {
       if (response.statusCode == 200) {
         result = response.body;
       } else {
-        result = "Error";
+        result = response.body;
         print(response.statusCode);
       }
     } finally {

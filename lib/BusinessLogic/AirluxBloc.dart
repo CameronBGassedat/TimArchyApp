@@ -12,16 +12,19 @@ class AirluxBloc {
   late List<Room> _rooms;
   late List<User> _users;
   late List<Sensor> _sensors;
+  late User _currentUser;
 
   final _buildingsSubject = BehaviorSubject<List<Building>>();
   final _roomsSubject = BehaviorSubject<List<Room>>();
   final _usersSubject = BehaviorSubject<List<User>>();
   final _sensorsSubject = BehaviorSubject<List<Sensor>>();
+  final _currentUserSubject = BehaviorSubject<User>();
 
   Stream<List<Building>> get buildingsStream => _buildingsSubject.stream;
   Stream<List<Room>> get roomsStream => _roomsSubject.stream;
   Stream<List<User>> get usersStream => _usersSubject.stream;
   Stream<List<Sensor>> get sensorsStream => _sensorsSubject.stream;
+  Stream<User> get currentUserStream => _currentUserSubject.stream;
 
   AirluxBloc()
   {
@@ -52,7 +55,15 @@ class AirluxBloc {
     _rooms = await _repository.getAllRooms();
     _roomsSubject.add(_rooms);
   }
+  /*
+  Future<void> loadSingleUser()
+  async {
+    _currentUser = await _repository.;
+    _currentUserSubject.add(_currentUser);
+  }
+  */
 
+  /*
   Widget buildSensorsListView() {
     return StreamBuilder<List<Sensor>>(
       stream: sensorsStream,
@@ -87,7 +98,7 @@ class AirluxBloc {
       },
     );
   }
-
+  */
   void dispose() {
     _buildingsSubject.close();
     _roomsSubject.close();
