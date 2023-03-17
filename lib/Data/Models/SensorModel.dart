@@ -9,8 +9,8 @@ class Sensor{
     Sensor.fromJson(Map<String, dynamic> json):
         id = int.parse(json['id']),
         name = json['name'] ,
-        data = json['data'];
-        //roomID = int.parse(json['roomID']);
+        data = json['data'],
+        roomID = [int.parse(json['roomID'])];
 
     Map<String, dynamic> toJson() => {
         'id' : id,

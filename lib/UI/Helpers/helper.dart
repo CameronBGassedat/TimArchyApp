@@ -25,10 +25,11 @@ Container makeNavBarContainer(double navBarPaddingLeft, double navBarPaddingRigh
     );
 }
 
-TextField makeTextField(String hintText)
+TextField makeTextField(String hintText, TextEditingController controller)
 {
   return
     TextField(
+      controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         enabledBorder: OutlineInputBorder(
@@ -43,7 +44,7 @@ TextField makeTextField(String hintText)
     );
 }
 
-FractionallySizedBox makeFormSizedBox(String txtText, String txtFdHintText)
+FractionallySizedBox makeFormSizedBox(String txtText, String txtFdHintText, TextEditingController controller)
 {
   return
     FractionallySizedBox(
@@ -51,7 +52,7 @@ FractionallySizedBox makeFormSizedBox(String txtText, String txtFdHintText)
       child: Column(
         children: [
           makeText(txtText, Colors.black, 26, FontStyle.normal, FontWeight.bold),
-          makeTextField(txtFdHintText),
+          makeTextField(txtFdHintText, controller),
         ],
       ),
     );
