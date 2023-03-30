@@ -28,7 +28,7 @@ class AirluxApi {
     return responseBody;
   }
 
-  Future<String> postCall(String route, Map<String, String> bodymap) async
+  Future<String> postCall(String route, Map<String, dynamic> bodyMap) async
   {
     String result;
     var client = http.Client();
@@ -39,7 +39,7 @@ class AirluxApi {
           headers: <String, String>{
             'Content-Type': 'application/json',
           },
-          body : json.encode(bodymap)
+          body : json.encode(bodyMap)
       );
       if (response.statusCode == 200) {
         result = response.body;

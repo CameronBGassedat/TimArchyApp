@@ -32,6 +32,7 @@ class AirluxBloc {
     loadSensors();
   }
 
+  //#region GET REGION
   Future<void> loadSensors()
   async {
     _sensors = await _repository.getAllSensors();
@@ -55,50 +56,18 @@ class AirluxBloc {
     _rooms = await _repository.getAllRooms();
     _roomsSubject.add(_rooms);
   }
-  /*
-  Future<void> loadSingleUser()
-  async {
-    _currentUser = await _repository.;
-    _currentUserSubject.add(_currentUser);
-  }
-  */
+  //#endregion
 
-  /*
-  Widget buildSensorsListView() {
-    return StreamBuilder<List<Sensor>>(
-      stream: sensorsStream,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          final sensors = snapshot.data!;
-          return ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: sensors.length,
-            itemBuilder: (context, index) {
-              final sensor = sensors[index];
-              return
-                Card(
-                  elevation: 5,
-                  child: Column(
-                      children : [
-                        Text("ID : ${sensor.id}"),
-                        Text("Sensor Type : ${sensor.name}"),
-                        Text("Value : ${sensor.data}"),
-                        Text("RoomID : ${sensor.roomID}"),
-                      ]
-                  ),
-                );
-            },
-          );
-        } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
-        } else {
-          return const CircularProgressIndicator();
-        }
-      },
-    );
+  //#region POST REGION
+
+  Future<void> addUser()
+  async {
+    Map<String, dynamic> bodymap = {'id': 1, 'name': 'bob', 'data' : '12 degrees', 'roomID' : 11};
+    await _repository.postSensor(bodymap);
   }
-  */
+
+  //#endregion
+
   void dispose() {
     _buildingsSubject.close();
     _roomsSubject.close();
