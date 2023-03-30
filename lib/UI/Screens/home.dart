@@ -42,7 +42,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-
+    airluxBloc.addUser();
     bool isConnection = true;
     return Scaffold(
       bottomNavigationBar: NavigationBar(
@@ -63,23 +63,23 @@ class HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(0.05*screenWidth),
+              padding: EdgeInsets.all(0.05 * screenWidth),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset(
                     "images/logo_min.png",
-                    height: 0.06*screenHeight
+                    height: 0.06 * screenHeight
                   ),
                   Container(
                     alignment: Alignment.bottomCenter,
-                    height: 0.09*screenHeight,
+                    height: 0.09 * screenHeight,
                     child: makeText(title[index], Colors.black, index == 3 ? 38 : 42, FontStyle.italic, FontWeight.w900)
                   ),
                   Image.asset(
                     "images/user_menu.png",
-                    height: 0.05*screenHeight,
+                    height: 0.05 * screenHeight,
                   ),
                 ],
               ),
