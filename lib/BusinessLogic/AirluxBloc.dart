@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tim_archy_app/Data/Repositories/AirLuxRepository.dart';
+import 'package:uuid/uuid.dart';
+import 'package:crypto/crypto.dart';
 import 'package:rxdart/rxdart.dart';
 import '../Data/Models/BuildingModel.dart';
 import '../Data/Models/RoomModel.dart';
@@ -58,14 +62,39 @@ class AirluxBloc {
   }
   //#endregion
 
-  //#region POST REGION
-
-  Future<void> addUser()
+  //#region POST USER REGION
+  Future<void> addUser(String name, String email, String password)
   async {
-    Map<String, dynamic> bodymap = {'id': 1, 'name': 'bob', 'data' : '12 degrees', 'roomID' : 11};
-    await _repository.postSensor(bodymap);
+    const uuid = Uuid();
+    Map<String, dynamic> bodymap = {
+      'id':  uuid.v4(),
+      'name': 'name',
+      'email' : 'bob@gmail.com',
+      'password' : hashPassword(password)
+    };
+    await _repository.postUser(bodymap);
   }
 
+  Future<void> loadSingleUser(String email)
+  async {
+    await _repository.getSingleUser(email);
+  }
+
+  String hashPassword(String password) {
+    final bytes = utf8.encode(password);
+    final digest = sha256.convert(bytes);
+    return digest.toString();
+  }
+
+  Future<void> saveUserEmail(String email) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user_email', hashPassword(email));
+  }
+
+  Future<String> getUserEmail() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('user_email');
+  }
   //#endregion
 
   void dispose() {

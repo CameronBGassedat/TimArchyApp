@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tim_archy_app/BusinessLogic/AirluxBloc.dart';
 import 'package:tim_archy_app/UI/Helpers/helper.dart';
 import '../home.dart';
 
-Widget displayRegister(BuildContext context)
+Widget displayRegister(BuildContext context, AirluxBloc airluxBloc)
 {
-
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
   final emailController = TextEditingController();

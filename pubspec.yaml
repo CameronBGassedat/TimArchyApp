@@ -36,7 +36,9 @@ dependencies:
   flutter_bloc : ^7.2.0
   http: ^0.13.5
   shared_preferences: ^0.5.8
-  
+  crypto: any
+  uuid : any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

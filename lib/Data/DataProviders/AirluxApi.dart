@@ -1,4 +1,4 @@
-import 'dart:convert';
+ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AirluxApi {
@@ -11,26 +11,22 @@ class AirluxApi {
 
   Future<String> getCall(String route) async
   {
-    String responseBody;
     var client = http.Client();
     try {
       var uri = Uri.http('10.0.2.2:3000', route);
       final response = await client.get(uri);
       if (response.statusCode == 200) {
-        responseBody = response.body;
+        return response.body;
       } else {
-        responseBody = "Error";
-        print("Error Status Code : ${response.statusCode}");
+        return "Error";
       }
     } finally {
       client.close();
     }
-    return responseBody;
   }
 
   Future<String> postCall(String route, Map<String, dynamic> bodyMap) async
   {
-    String result;
     var client = http.Client();
     try {
       var url = Uri.http('10.0.2.2:3000', route);
@@ -42,14 +38,12 @@ class AirluxApi {
           body : json.encode(bodyMap)
       );
       if (response.statusCode == 200) {
-        result = response.body;
+        return response.body;
       } else {
-        result = response.body;
-        print(response.statusCode);
+        return response.body;
       }
     } finally {
       client.close();
     }
-    return result;
   }
 }

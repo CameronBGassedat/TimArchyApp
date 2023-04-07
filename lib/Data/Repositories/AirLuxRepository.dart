@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import '../DataProviders/AirluxApi.dart';
 import '../Models/BuildingModel.dart';
 import '../Models/RoomModel.dart';
@@ -58,20 +57,17 @@ class AirluxRepository {
     return users;
   }
 
-  Future<List<User>> getSingleUser()
+  Future<User> getSingleUser(String email)
   async {
-    var responseBody = await api.getCall(api.routeQueries["User"]!);
+    var responseBody = await api.getCall(api.routeQueries["User"]! + email);
     List jsonResponse = jsonDecode(responseBody);
 
-    var users = jsonResponse.map(
-            (item) => User.fromJson(item)
-    ).toList();
-    return users;
+    var user = User.fromJson(jsonResponse as Map<String, dynamic>);
+    return user;
   }
 
   Future<void> postUser(Map<String, dynamic> bodymap)
   async {
-    //Map<String, dynamic> bodymap = {'id': 1, 'name': 'bob', 'data' : '12 degrees', 'roomID' : 11};
     var responseBody = await api.postCall(api.routeQueries["User"]!, bodymap);
     print(responseBody);
   }
@@ -85,14 +81,12 @@ class AirluxRepository {
 
   Future<void> postBuilding(Map<String, dynamic> bodymap)
   async {
-    //Map<String, dynamic> bodymap = {'id': 1, 'name': 'bob', 'data' : '12 degrees', 'roomID' : 11};
     var responseBody = await api.postCall(api.routeQueries["Building"]!, bodymap);
     print(responseBody);
   }
 
   Future<void> postRoom(Map<String, dynamic> bodymap)
   async {
-    //Map<String, dynamic> bodymap = {'id': 1, 'name': 'bob', 'data' : '12 degrees', 'roomID' : 11};
     var responseBody = await api.postCall(api.routeQueries["Room"]!, bodymap);
     print(responseBody);
   }
