@@ -21,7 +21,7 @@ Widget displayLogin(BuildContext context)
         ),
 
         Padding(
-          padding: EdgeInsets.only(bottom: 0.02*screenHeight),
+          padding: EdgeInsets.only(bottom: 0.025*screenHeight),
           child: FractionallySizedBox(
             widthFactor: 0.55,
             child: InkWell(

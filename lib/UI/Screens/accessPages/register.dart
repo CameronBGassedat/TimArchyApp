@@ -4,14 +4,25 @@ import '../home.dart';
 
 Widget displayRegister(BuildContext context)
 {
+  final screenHeight = MediaQuery.of(context).size.height;
+
   return
     Column(
       children: [
-        makeFormSizedBox("Nom d'utilisateur", "Entrer votre nom d'utilisateur"),
+        Padding(
+          padding: EdgeInsets.only(bottom: 0.025*screenHeight),
+          child: makeFormSizedBox("Nom d'utilisateur", "Entrer votre nom d'utilisateur"),
+        ),
 
-        makeFormSizedBox("Adresse email", "Enter votre mot de passe"),
+        Padding(
+          padding: EdgeInsets.only(bottom: 0.025*screenHeight),
+          child: makeFormSizedBox("Adresse email", "Enter votre mot de passe"),
+        ),
 
-        makeFormSizedBox("Enter votre adresse email", "Enter votre mot de passe"),
+        Padding(
+          padding: EdgeInsets.only(bottom: 0.05*screenHeight),
+          child: makeFormSizedBox("Mot de passe", "Enter votre mot de passe"),
+        ),
 
         FractionallySizedBox(
           widthFactor: 0.55,
