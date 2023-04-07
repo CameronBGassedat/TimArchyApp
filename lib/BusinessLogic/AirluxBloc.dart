@@ -68,8 +68,8 @@ class AirluxBloc {
     const uuid = Uuid();
     Map<String, dynamic> bodymap = {
       'id':  uuid.v4(),
-      'name': 'name',
-      'email' : 'bob@gmail.com',
+      'name': name,
+      'email' : email,
       'password' : hashPassword(password)
     };
     await _repository.postUser(bodymap);
