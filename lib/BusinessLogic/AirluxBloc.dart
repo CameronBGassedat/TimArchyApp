@@ -69,12 +69,12 @@ class AirluxBloc {
                 Card(
                   elevation: 5,
                   child: Column(
-                      children : [
-                        Text("ID : ${sensor.id}"),
-                        Text("Sensor Type : ${sensor.name}"),
-                        Text("Value : ${sensor.data}"),
-                        Text("RoomID : ${sensor.roomID}"),
-                      ]
+                    children : [
+                      Text("ID : ${sensor.id}"),
+                      Text("Sensor Type : ${sensor.name}"),
+                      Text("Value : ${sensor.data}"),
+                      Text("RoomID : ${sensor.roomID}"),
+                    ]
                   ),
                 );
             },

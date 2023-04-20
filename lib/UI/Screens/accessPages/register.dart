@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/UI/Helpers/helper.dart';
-import '../home.dart';
+import 'package:tim_archy_app/UI/Screens/home.dart';
 
 Widget displayRegister(BuildContext context)
 {
@@ -16,12 +16,12 @@ Widget displayRegister(BuildContext context)
 
         Padding(
           padding: EdgeInsets.only(bottom: 0.025*screenHeight),
-          child: makeFormSizedBox("Adresse email", "Enter votre mot de passe"),
+          child: makeFormSizedBox("Adresse email", "Entrer votre adresse email"),
         ),
 
         Padding(
           padding: EdgeInsets.only(bottom: 0.05*screenHeight),
-          child: makeFormSizedBox("Mot de passe", "Enter votre mot de passe"),
+          child: makeFormSizedBox("Mot de passe", "Entrer votre mot de passe"),
         ),
 
         FractionallySizedBox(

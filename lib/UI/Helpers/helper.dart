@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+Image makeImage(String path, double imgHeight, {Color? imgColor})
+{
+  return
+    Image.asset(
+      "images/$path",
+      height: imgHeight,
+      color: imgColor,
+    );
+}
+
 Text makeText(String text, Color txtColor, double txtSize, FontStyle txtStyle, FontWeight txtWeight)
 {
   return
@@ -76,14 +86,11 @@ Container makeCustomButton(Color btnColor, double topLeftRadius, double topRight
     );
 }
 
-NavigationDestination makeIndex(String indexText, double indexHeight, Color indexColor, String indexLabel) {
+NavigationDestination makeIndex(String path, double imgHeight, Color imgColor, String indexLabel)
+{
   return
     NavigationDestination(
-      icon: Image.asset(
-        indexText,
-        height: indexHeight,
-        color: indexColor,
-      ),
+      icon: makeImage(path, imgHeight, imgColor: imgColor),
       label: indexLabel,
     );
 }

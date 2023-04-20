@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tim_archy_app/BusinessLogic/AirluxBloc.dart';
 import 'package:tim_archy_app/UI/Helpers/helper.dart';
 import 'package:tim_archy_app/UI/Screens/accessPages/login.dart';
 import 'package:tim_archy_app/UI/Screens/accessPages/register.dart';
-import '../../BusinessLogic/AirluxBloc.dart';
 
 class AccessPage extends StatefulWidget {
   const AccessPage({super.key});
@@ -31,13 +31,10 @@ class AccessPageState extends State<AccessPage> {
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 0.05*screenHeight, bottom: 0.05*screenHeight),
-                child: Image.asset(
-                  'images/logo_max.png',
-                  width: 0.8*screenWidth,
-                ),
+                child: makeImage("logo_max.png", 0.1*screenHeight),
               ),
 
-              Container(
+              Padding(
                 padding: EdgeInsets.only(bottom: 0.05*screenHeight),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

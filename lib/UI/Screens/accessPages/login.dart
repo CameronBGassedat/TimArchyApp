@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tim_archy_app/UI/Helpers/helper.dart';
-
-import '../home.dart';
+import 'package:tim_archy_app/UI/Screens/home.dart';
 
 Widget displayLogin(BuildContext context)
 {
