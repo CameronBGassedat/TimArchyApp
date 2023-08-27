@@ -11,17 +11,17 @@ Widget displayRegister(BuildContext context)
       children: [
         Padding(
           padding: EdgeInsets.only(bottom: 0.025*screenHeight),
-          child: makeFormSizedBox("Nom d'utilisateur", "Entrer votre nom d'utilisateur"),
+          child: makeFormSizedBox("Nom d'utilisateur", "Entrez votre nom d'utilisateur"),
         ),
 
         Padding(
           padding: EdgeInsets.only(bottom: 0.025*screenHeight),
-          child: makeFormSizedBox("Adresse email", "Entrer votre adresse email"),
+          child: makeFormSizedBox("Adresse email", "Entrez votre adresse email"),
         ),
 
         Padding(
           padding: EdgeInsets.only(bottom: 0.05*screenHeight),
-          child: makeFormSizedBox("Mot de passe", "Entrer votre mot de passe"),
+          child: makeFormSizedBox("Mot de passe", "Entrez votre mot de passe"),
         ),
 
         FractionallySizedBox(

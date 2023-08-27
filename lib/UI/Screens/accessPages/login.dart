@@ -11,12 +11,12 @@ Widget displayLogin(BuildContext context)
       children: [
         Padding(
           padding: EdgeInsets.only(bottom: 0.05*screenHeight),
-          child: makeFormSizedBox("Nom d'utilisateur", "Entrer votre nom d'utilisateur"),
+          child: makeFormSizedBox("Nom d'utilisateur", "Entrez votre nom d'utilisateur"),
         ),
 
         Padding(
           padding: EdgeInsets.only(bottom: 0.05*screenHeight),
-          child: makeFormSizedBox("Mot de passe", "Enter votre mot de passe"),
+          child: makeFormSizedBox("Mot de passe", "Entrez votre mot de passe"),
         ),
 
         Padding(

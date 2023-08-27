@@ -120,14 +120,46 @@ class HomePageState extends State<HomePage> {
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(left: 0.06*screenWidth, right: 0.06*screenWidth),
-                                    child: Row(
-                                      children: [
-                                        makeImage("bug_report.png", 0.03*screenHeight),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 0.03*screenWidth),
-                                          child: makeText("Rapport de bug", Colors.black, 24, FontStyle.italic, FontWeight.w900)
-                                        ),
-                                      ]
+                                    child: InkWell(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (_) => AlertDialog(
+                                            title: makeText("Décrivez nous votre problème", Colors.black, 20, FontStyle.normal, FontWeight.bold),
+                                            content: Column(
+                                              children: [
+                                                makeFormSizedBox("Titre", "Donnez un titre à votre rapport"),
+                                                // DropdownButton(
+                                                //   value: dropdownValue,
+                                                //   onChanged:
+                                                //     setState(() {
+                                                //       dropdownValue = value;
+                                                //     }),
+                                                //     https://api.flutter.dev/flutter/material/DropdownButton-class.html
+                                                //   items: const [
+                                                //     DropdownMenuItem(value: "5a5c6b2ffdffc6afb9e212a0", child: Text("Problèmes visuels")),
+                                                //     DropdownMenuItem(value:"5fa1928483a7d601361f58d2", child: Text("Problèmes fonctionnel")),
+                                                //     DropdownMenuItem(value:"6349535a47872c003fcafdc2", child: Text("Problèmes d'appairage'")),
+                                                //     DropdownMenuItem(value:"61825e8ed9c64b55e510512a", child: Text("Problème de gestion droits")),
+                                                //     DropdownMenuItem(value:"606c31754e92d6609dc9a654", child: Text("Problème de gestion des capteurs")),
+                                                //   ],
+                                                // ),
+                                                makeFormSizedBox("Description", "Décrivez nous votre problème et comment l'avez vous eu"),
+                                              ],
+                                            ),
+                                            actions: [const Text("Yes"),],
+                                          )
+                                        );
+                                      },
+                                      child: Row(
+                                        children: [
+                                          makeImage("bug_report.png", 0.03*screenHeight),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 0.03*screenWidth),
+                                            child: makeText("Rapport de bug", Colors.black, 24, FontStyle.italic, FontWeight.w900)
+                                          ),
+                                        ]
+                                      ),
                                     ),
                                   ),
                                   Padding(
