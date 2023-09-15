@@ -15,11 +15,10 @@ class Sensor {
   String value;
   String capacity;
 
-
   Sensor(this.id, this.name, this.value, this.capacity);
 }
 
-List<Sensor> getSensorList(){
+List<Sensor> getSensorList() {
   getData();
   return sensorList;
 }
@@ -31,31 +30,28 @@ Widget sensorsContainer(AirluxBloc airluxBloc) {
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         itemCount: getSensorList().length,
-        itemBuilder: (BuildContext context, int index){
+        itemBuilder: (BuildContext context, int index) {
           Sensor sensor = getSensorList()[index];
-          return
-            Card(
-              elevation: 5,
-              child: Column(
-                  children : [
-                    Text("ID : ${sensor.id}"), //${sensor.id}
-                    Text("Sensor Type : ${sensor.name}"),
-                    Text("Value : ${sensor.value}"),
-                    Text("Capacity : ${sensor.capacity}"),
-                  ]
-              ),
-            );
+          return Card(
+            elevation: 5,
+            child: Column(children: [
+              Text("ID : ${sensor.id}"), //${sensor.id}
+              Text("Sensor Type : ${sensor.name}"),
+              Text("Value : ${sensor.value}"),
+              Text("Capacity : ${sensor.capacity}"),
+            ]),
+          );
         },
       ),
     );
-
   });
 
-    //airluxBloc.buildSensorsListView();
+  //airluxBloc.buildSensorsListView();
 }
 
-void getData() async{
-  http.Response response = await http.get(Uri().resolve('http://10.31.38.171:3000/sensor'));
+void getData() async {
+  http.Response response =
+      await http.get(Uri().resolve('http://10.31.38.171:3000/sensor'));
   if (response.statusCode == 200) {
     var sensors = json.decode(response.body);
     Map myMap = sensors;
@@ -67,16 +63,16 @@ void getData() async{
 
     sensorList.clear();
 
-    myMap.forEach((key, value){
+    myMap.forEach((key, value) {
       List myList = value;
       print('$key : $value');
       print(value.runtimeType);
       print(value);
       print(myList[0]['name']);
 
-      for (int i=0; i<myList.length ; i++){
-
-        sensorList.add(Sensor(myList[i]['entityId'], myList[i]['name'], myList[i]['value'], myList[i]['capacity']));
+      for (int i = 0; i < myList.length; i++) {
+        sensorList.add(Sensor(myList[i]['entityId'], myList[i]['entityId'],
+            myList[i]['value'], myList[i]['capacity']));
       }
       print(sensorList);
     });

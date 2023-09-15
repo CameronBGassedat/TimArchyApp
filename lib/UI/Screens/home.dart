@@ -6,6 +6,7 @@ import 'package:tim_archy_app/UI/Screens/homePages/favorites.dart';
 import 'package:tim_archy_app/UI/Screens/homePages/scenarios.dart';
 import 'package:tim_archy_app/UI/Screens/homePages/sensors.dart';
 import 'package:tim_archy_app/UI/Screens/homePages/users.dart';
+import 'package:tim_archy_app/UI/Screens/pairPages/device_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,140 +46,188 @@ class HomePageState extends State<HomePage> {
 
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        height: 0.075*screenHeight,
+        height: 0.075 * screenHeight,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         selectedIndex: index,
         onDestinationSelected: (index) => setState(() => {this.index = index}),
         destinations: [
-          makeIndex("blank_heart.png", 30, index == 0 ? Colors.black : Colors.grey, "Favoris"),
-          makeIndex("sensors.png", 33, index == 1 ? Colors.black : Colors.grey, "Capteurs"),
-          makeIndex("scenarios.png", 25, index == 2 ? Colors.black : Colors.grey, "Scenarios"),
-          makeIndex("users.png", 27, index == 3 ? Colors.black : Colors.grey, "Utilisateurs"),
-          makeIndex("buildings.png", 30, index == 4 ? Colors.black : Colors.grey, "Batiments"),
+          makeIndex("blank_heart.png", 30,
+              index == 0 ? Colors.black : Colors.grey, "Favoris"),
+          makeIndex("sensors.png", 33, index == 1 ? Colors.black : Colors.grey,
+              "Capteurs"),
+          makeIndex("scenarios.png", 25,
+              index == 2 ? Colors.black : Colors.grey, "Scenarios"),
+          makeIndex("users.png", 27, index == 3 ? Colors.black : Colors.grey,
+              "Utilisateurs"),
+          makeIndex("buildings.png", 30,
+              index == 4 ? Colors.black : Colors.grey, "Batiments"),
         ],
       ),
       body: SafeArea(
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(0.05*screenWidth),
+              padding: EdgeInsets.all(0.05 * screenWidth),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  makeImage("logo_min.png", 0.06*screenHeight),
+                  makeImage("logo_min.png", 0.06 * screenHeight),
                   Container(
-                    alignment: Alignment.bottomCenter,
-                    height: 0.09*screenHeight,
-                    child: makeText(title[index], Colors.black, index == 3 ? 38 : 42, FontStyle.italic, FontWeight.w900)
-                  ),
+                      alignment: Alignment.bottomCenter,
+                      height: 0.09 * screenHeight,
+                      child: makeText(
+                          title[index],
+                          Colors.black,
+                          index == 3 ? 38 : 42,
+                          FontStyle.italic,
+                          FontWeight.w900)),
                   InkWell(
-                    child: makeImage("user_menu.png", 0.05*screenHeight),
+                    child: makeImage("user_menu.png", 0.06 * screenHeight),
                     onTap: () {
                       showModalBottomSheet(
-                        backgroundColor: Colors.grey[350],
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(60)),
-                        ),
-                        context: context,
-                        builder: (BuildContext context) {
-                          return
-                            SizedBox(
-                              height: 0.30*screenHeight,
+                          backgroundColor: Colors.grey[350],
+                          shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.vertical(top: Radius.circular(60)),
+                          ),
+                          context: context,
+                          builder: (BuildContext context) {
+                            return SizedBox(
+                              height: 0.30 * screenHeight,
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(left: 0.06*screenWidth, right: 0.06*screenWidth),
+                                    padding: EdgeInsets.only(
+                                        left: 0.06 * screenWidth,
+                                        right: 0.06 * screenWidth),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          children: [
-                                            makeImage("user_menu.png", 0.03*screenHeight),
-                                            Padding(
-                                              padding: EdgeInsets.only(left: 0.03*screenWidth),
-                                              child: makeText("Cameron", Colors.black, 24, FontStyle.italic, FontWeight.w900)
-                                            ),
-                                          ]
-                                        ),
-                                        makeText("Administrateur", Colors.black, 20, FontStyle.italic, FontWeight.normal),
+                                        Row(children: [
+                                          makeImage("user_menu.png",
+                                              0.03 * screenHeight),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: 0.03 * screenWidth),
+                                              child: makeText(
+                                                  "Cameron",
+                                                  Colors.black,
+                                                  24,
+                                                  FontStyle.italic,
+                                                  FontWeight.w900)),
+                                        ]),
+                                        makeText(
+                                            "Administrateur",
+                                            Colors.black,
+                                            20,
+                                            FontStyle.italic,
+                                            FontWeight.normal),
                                       ],
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 0.06*screenWidth, right: 0.06*screenWidth),
-                                    child: Row(
-                                      children: [
-                                        makeImage("settings.png", 0.03*screenHeight),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 0.03*screenWidth),
-                                          child: makeText("Paramètres", Colors.black, 24, FontStyle.italic, FontWeight.w900)
-                                        ),
-                                      ]
-                                    ),
+                                    padding: EdgeInsets.only(
+                                        left: 0.06 * screenWidth,
+                                        right: 0.06 * screenWidth),
+                                    child: Row(children: [
+                                      makeImage(
+                                          "settings.png", 0.03 * screenHeight),
+                                      Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 0.03 * screenWidth),
+                                          child: makeText(
+                                              "Paramètres",
+                                              Colors.black,
+                                              24,
+                                              FontStyle.italic,
+                                              FontWeight.w900)),
+                                    ]),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 0.06*screenWidth, right: 0.06*screenWidth),
+                                    padding: EdgeInsets.only(
+                                        left: 0.06 * screenWidth,
+                                        right: 0.06 * screenWidth),
                                     child: InkWell(
                                       onTap: () {
                                         showDialog(
-                                          context: context,
-                                          builder: (_) => AlertDialog(
-                                            title: makeText("Décrivez nous votre problème", Colors.black, 20, FontStyle.normal, FontWeight.bold),
-                                            content: Column(
-                                              children: [
-                                                makeFormSizedBox("Titre", "Donnez un titre à votre rapport"),
-                                                // DropdownButton(
-                                                //   value: dropdownValue,
-                                                //   onChanged:
-                                                //     setState(() {
-                                                //       dropdownValue = value;
-                                                //     }),
-                                                //     https://api.flutter.dev/flutter/material/DropdownButton-class.html
-                                                //   items: const [
-                                                //     DropdownMenuItem(value: "5a5c6b2ffdffc6afb9e212a0", child: Text("Problèmes visuels")),
-                                                //     DropdownMenuItem(value:"5fa1928483a7d601361f58d2", child: Text("Problèmes fonctionnel")),
-                                                //     DropdownMenuItem(value:"6349535a47872c003fcafdc2", child: Text("Problèmes d'appairage'")),
-                                                //     DropdownMenuItem(value:"61825e8ed9c64b55e510512a", child: Text("Problème de gestion droits")),
-                                                //     DropdownMenuItem(value:"606c31754e92d6609dc9a654", child: Text("Problème de gestion des capteurs")),
-                                                //   ],
-                                                // ),
-                                                makeFormSizedBox("Description", "Décrivez nous votre problème et comment l'avez vous eu"),
-                                              ],
-                                            ),
-                                            actions: [const Text("Yes"),],
-                                          )
-                                        );
+                                            context: context,
+                                            builder: (_) => AlertDialog(
+                                                  title: makeText(
+                                                      "Décrivez nous votre problème",
+                                                      Colors.black,
+                                                      20,
+                                                      FontStyle.normal,
+                                                      FontWeight.bold),
+                                                  content: Column(
+                                                    children: [
+                                                      makeFormSizedBox("Titre",
+                                                          "Donnez un titre à votre rapport"),
+                                                      // DropdownButton(
+                                                      //   value: dropdownValue,
+                                                      //   onChanged:
+                                                      //     setState(() {
+                                                      //       dropdownValue = value;
+                                                      //     }),
+                                                      //     https://api.flutter.dev/flutter/material/DropdownButton-class.html
+                                                      //   items: const [
+                                                      //     DropdownMenuItem(value: "5a5c6b2ffdffc6afb9e212a0", child: Text("Problèmes visuels")),
+                                                      //     DropdownMenuItem(value:"5fa1928483a7d601361f58d2", child: Text("Problèmes fonctionnel")),
+                                                      //     DropdownMenuItem(value:"6349535a47872c003fcafdc2", child: Text("Problèmes d'appairage'")),
+                                                      //     DropdownMenuItem(value:"61825e8ed9c64b55e510512a", child: Text("Problème de gestion droits")),
+                                                      //     DropdownMenuItem(value:"606c31754e92d6609dc9a654", child: Text("Problème de gestion des capteurs")),
+                                                      //   ],
+                                                      // ),
+                                                      makeFormSizedBox(
+                                                          "Description",
+                                                          "Décrivez nous votre problème et comment l'avez vous eu"),
+                                                    ],
+                                                  ),
+                                                  actions: [
+                                                    const Text("Yes"),
+                                                  ],
+                                                ));
                                       },
-                                      child: Row(
-                                        children: [
-                                          makeImage("bug_report.png", 0.03*screenHeight),
-                                          Padding(
-                                            padding: EdgeInsets.only(left: 0.03*screenWidth),
-                                            child: makeText("Rapport de bug", Colors.black, 24, FontStyle.italic, FontWeight.w900)
-                                          ),
-                                        ]
-                                      ),
+                                      child: Row(children: [
+                                        makeImage("bug_report.png",
+                                            0.03 * screenHeight),
+                                        Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 0.03 * screenWidth),
+                                            child: makeText(
+                                                "Rapport de bug",
+                                                Colors.black,
+                                                24,
+                                                FontStyle.italic,
+                                                FontWeight.w900)),
+                                      ]),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 0.06*screenWidth, right: 0.06*screenWidth),
-                                    child: Row(
-                                        children: [
-                                          makeImage("disconnect.png", 0.03*screenHeight),
-                                          Padding(
-                                              padding: EdgeInsets.only(left: 0.03*screenWidth),
-                                              child: makeText("Disconnect", Colors.black, 24, FontStyle.italic, FontWeight.w900)
-                                          ),
-                                        ]
-                                    ),
+                                    padding: EdgeInsets.only(
+                                        left: 0.06 * screenWidth,
+                                        right: 0.06 * screenWidth),
+                                    child: Row(children: [
+                                      makeImage("disconnect.png",
+                                          0.03 * screenHeight),
+                                      Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 0.03 * screenWidth),
+                                          child: makeText(
+                                              "Disconnect",
+                                              Colors.black,
+                                              24,
+                                              FontStyle.italic,
+                                              FontWeight.w900)),
+                                    ]),
                                   ),
                                 ],
                               ),
                             );
-                        }
-                      );
+                          });
                     },
                   ),
                 ],
@@ -190,6 +239,18 @@ class HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      floatingActionButton: index == 1
+          ? FloatingActionButton(
+              backgroundColor: const Color(0xFF70bed3),
+              child: makeImage("sensors_add.png", screenHeight),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => DevicesScreen(
+                          title: "Appairage",
+                        )));
+              },
+            )
+          : null,
     );
   }
 }
