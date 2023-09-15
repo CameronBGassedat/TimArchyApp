@@ -5,22 +5,23 @@ import 'package:tim_archy_app/UI/Screens/home.dart';
 Widget displayLogin(BuildContext context)
 {
   final screenHeight = MediaQuery.of(context).size.height;
+  final screenWidth = MediaQuery.of(context).size.width;
 
   return
     Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(bottom: 0.05*screenHeight),
+          padding: EdgeInsets.only(bottom: 0.05 * screenHeight),
           child: makeFormSizedBox("Nom d'utilisateur", "Entrez votre nom d'utilisateur"),
         ),
 
         Padding(
-          padding: EdgeInsets.only(bottom: 0.05*screenHeight),
+          padding: EdgeInsets.only(bottom: 0.05 * screenHeight),
           child: makeFormSizedBox("Mot de passe", "Entrez votre mot de passe"),
         ),
 
         Padding(
-          padding: EdgeInsets.only(bottom: 0.025*screenHeight),
+          padding: EdgeInsets.only(bottom: 0.025 * screenHeight),
           child: FractionallySizedBox(
             widthFactor: 0.55,
             child: InkWell(
@@ -32,7 +33,47 @@ Widget displayLogin(BuildContext context)
           ),
         ),
 
-        makeText("Mot de passe oublié ?", const Color(0xFF40A8C4), 18, FontStyle.normal, FontWeight.bold),
+        InkWell(
+          child: makeText("Mot de passe oublié ?", const Color(0xFF40A8C4), 18, FontStyle.normal, FontWeight.bold),
+          onTap : () {
+            showDialog(
+              context: context,
+              builder: (_) => Dialog(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 0.02 * screenHeight),
+                        child: makeText(
+                          "Renseignez votre adresse email pour recevoir un email de réinitialisation",
+                          Colors.black,
+                          20,
+                          FontStyle.normal,
+                          FontWeight.bold,
+                          txtAlign : TextAlign.center,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 0.02 * screenHeight),
+                        child: makeTextField("Entrer votre adresse email"),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: makeCustomButton(const Color(0xFF40A8C4), 25.0, 25.0, 25.0, 25.0, "Valider", btnWidth : 0.3 * screenWidth),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+
+        ),
       ]
     );
 }

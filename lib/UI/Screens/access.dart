@@ -30,12 +30,12 @@ class AccessPageState extends State<AccessPage> {
         child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 0.05*screenHeight, bottom: 0.05*screenHeight),
-                child: makeImage("logo_max.png", 0.1*screenHeight),
+                padding: EdgeInsets.only(top: 0.05 * screenHeight, bottom: 0.05 * screenHeight),
+                child: makeImage("logo_max.png", 0.1 * screenHeight),
               ),
 
               Padding(
-                padding: EdgeInsets.only(bottom: 0.05*screenHeight),
+                padding: EdgeInsets.only(bottom: 0.05 * screenHeight),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
 
@@ -46,7 +46,7 @@ class AccessPageState extends State<AccessPage> {
                           isConnection = true;
                         });
                       },
-                      child: makeNavBarContainer(0.0, 0.02*screenWidth, "Connexion", isConnection == true ? Colors.black : Colors.grey),
+                      child: makeNavBarContainer(0.0, 0.02 * screenWidth, "Connexion", isConnection == true ? Colors.black : Colors.grey),
                     ),
 
                     InkWell(
@@ -55,7 +55,7 @@ class AccessPageState extends State<AccessPage> {
                           isConnection = false;
                         });
                       },
-                      child: makeNavBarContainer(0.02*screenWidth, 0.0, "Inscription", isConnection == true ? Colors.grey : Colors.black),
+                      child: makeNavBarContainer(0.02 * screenWidth, 0.0, "Inscription", isConnection == true ? Colors.grey : Colors.black),
                     ),
                   ],
                 ),

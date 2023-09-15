@@ -142,32 +142,49 @@ class HomePageState extends State<HomePage> {
                                             context: context,
                                             builder: (_) => Dialog(
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(12.0),
+                                                  padding: const EdgeInsets.all(20.0),
                                                   child: Column(
                                                     mainAxisSize: MainAxisSize.min,
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
-                                                      makeText(
-                                                          "Entrer votre adresse IP",
+                                                      Padding(
+                                                        padding: EdgeInsets.only(bottom: 0.02 * screenHeight),
+                                                        child: makeText(
+                                                          "Adresse IP",
                                                           Colors.black,
                                                           20,
                                                           FontStyle.normal,
                                                           FontWeight.bold
+                                                        ),
                                                       ),
-                                                      TextField(
-                                                        onChanged: (value) {
-                                                          setState(() {
-                                                            ipValue = value;
-                                                          });
-                                                        },
-                                                      ),
-                                                      OutlinedButton(
-                                                          onPressed: () {
-                                                            globals.setIp(ipValue);
-                                                            Navigator.of(context).pop();
+                                                      Padding(
+                                                        padding: EdgeInsets.only(bottom: 0.02 * screenHeight),
+                                                        child: TextField(
+                                                          onChanged: (value) {
+                                                            setState(() {
+                                                              ipValue = value;
+                                                            });
                                                           },
-                                                          child: const Text("Valider")
+                                                          decoration: InputDecoration(
+                                                            hintText: "Entrer l'adresse IP",
+                                                            enabledBorder: OutlineInputBorder(
+                                                              borderRadius: BorderRadius.circular(10.0),
+                                                              borderSide: const BorderSide(width: 2.0),
+                                                            ),
+                                                            focusedBorder: OutlineInputBorder(
+                                                              borderRadius: BorderRadius.circular(10.0),
+                                                              borderSide: const BorderSide(color: Colors.blue, width: 2.0),
+                                                            ),
+                                                          ),
+                                                        ),
                                                       ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          globals.setIp(ipValue);
+                                                          Navigator.of(context).pop();
+                                                        },
+                                                        child: makeCustomButton(const Color(0xFF40A8C4), 25.0, 25.0, 25.0, 25.0, "Valider", btnWidth : 0.3 * screenWidth),
+                                                      )
                                                     ],
                                                   ),
                                                 ),

@@ -10,7 +10,7 @@ Image makeImage(String path, double imgHeight, {Color? imgColor})
     );
 }
 
-Text makeText(String text, Color txtColor, double txtSize, FontStyle txtStyle, FontWeight txtWeight)
+Text makeText(String text, Color txtColor, double txtSize, FontStyle txtStyle, FontWeight txtWeight, {TextAlign? txtAlign})
 {
   return
     Text(
@@ -21,6 +21,7 @@ Text makeText(String text, Color txtColor, double txtSize, FontStyle txtStyle, F
         fontStyle: txtStyle,
         fontWeight: txtWeight,
       ),
+      textAlign: txtAlign,
     );
 }
 
@@ -67,12 +68,13 @@ FractionallySizedBox makeFormSizedBox(String txtText, String txtFdHintText)
     );
 }
 
-Container makeCustomButton(Color btnColor, double topLeftRadius, double topRightRadius, double bottomLeftRadius, double bottomRightRadius, String btnText)
+Container makeCustomButton(Color btnColor, double topLeftRadius, double topRightRadius, double bottomLeftRadius, double bottomRightRadius, String btnText, {double? btnWidth})
 {
   return
     Container(
       alignment: Alignment.center,
       height: 60,
+      width: btnWidth,
       decoration: BoxDecoration(
         color: btnColor,
         borderRadius: BorderRadius.only(
