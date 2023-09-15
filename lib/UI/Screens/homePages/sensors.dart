@@ -1,10 +1,14 @@
 import 'dart:convert';
 
+
 import 'package:flutter/material.dart';
 import '../../../BusinessLogic/AirluxBloc.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:timer_builder/timer_builder.dart';
+
+const TEMPERATURE = "temperature";
+const HUMIDITY= "humidity";
 
 var sensorList = <Sensor>[];
 
@@ -32,15 +36,22 @@ Widget sensorsContainer(AirluxBloc airluxBloc) {
         itemCount: getSensorList().length,
         itemBuilder: (BuildContext context, int index) {
           Sensor sensor = getSensorList()[index];
-          return Card(
-            elevation: 5,
-            child: Column(children: [
-              Text("ID : ${sensor.id}"), //${sensor.id}
-              Text("Sensor Type : ${sensor.name}"),
-              Text("Value : ${sensor.value}"),
-              Text("Capacity : ${sensor.capacity}"),
-            ]),
-          );
+          print('SENSORVALUE: $sensor.value');
+          return
+            Card(
+              elevation: 5,
+              child: ListTile(
+                leading: Icon(selectIcon(sensor.capacity),
+                              color: Color(0xFF40A8C4),
+                              size: 40,
+                ),
+
+                title: Text('${sensor.id} ',
+                  style: const TextStyle(fontSize: 20)),
+                subtitle: Text(translate(sensor.capacity)),
+                trailing: Text(addUnity(sensor.capacity, sensor.value), style: const TextStyle(fontSize: 25)),
+              ),
+            );
         },
       ),
     );
@@ -56,27 +67,69 @@ void getData() async {
     var sensors = json.decode(response.body);
     Map myMap = sensors;
 
-    //List<String>? dataList = sensors != null ? List.from(sensors) : null;
-
-    //print("RESULT");
-    //print(dataList);
-
     sensorList.clear();
 
     myMap.forEach((key, value) {
       List myList = value;
+      /*
       print('$key : $value');
       print(value.runtimeType);
       print(value);
-      print(myList[0]['name']);
+      print(myList[0]['name']);*/
 
-      for (int i = 0; i < myList.length; i++) {
-        sensorList.add(Sensor(myList[i]['entityId'], myList[i]['entityId'],
-            myList[i]['value'], myList[i]['capacity']));
+      for (int i=0; i<myList.length ; i++){
+        sensorList.add(Sensor(myList[i]['entityId'], myList[i]['entityId'], myList[i]['value'], myList[i]['capacity']));
       }
-      print(sensorList);
+      //print(sensorList);
     });
   } else {
     print(response.statusCode);
   }
+}
+
+IconData? selectIcon(String capacity) {
+
+  IconData? capacityIcon = null;
+
+  switch(capacity.toLowerCase()) {
+    case TEMPERATURE : {
+      capacityIcon = Icons.thermostat;
+      break;
+    }
+    case HUMIDITY : {
+      capacityIcon = Icons.water_drop;
+      break;
+    }
+  }
+  return capacityIcon;
+}
+
+
+String addUnity(String capacity, String value) {
+
+  switch(capacity.toLowerCase()) {
+    case TEMPERATURE : {
+      value = value + " °C";
+      break;
+    }
+    case HUMIDITY : {
+      value = value + " %";
+      break;
+    }
+  }
+  return value;
+}
+
+String translate(String capacity){
+  switch(capacity.toLowerCase()) {
+    case TEMPERATURE : {
+      capacity = "Température";
+      break;
+    }
+    case HUMIDITY : {
+      capacity = "Humidité";
+      break;
+    }
+  }
+  return capacity;
 }
