@@ -17,7 +17,13 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   int index = 0;
   late AirluxBloc airluxBloc;
-  late List<Widget> pages = [];
+  late List<Widget> pages = [
+    favoritesContainer(),
+    sensorsContainer(airluxBloc),
+    scenariosContainer(),
+    usersContainer(),
+    buildingsContainer(),
+  ];
   final List<String> title = [
     "FAVORIS",
     "CAPTEURS",
@@ -25,17 +31,11 @@ class HomePageState extends State<HomePage> {
     "UTIILISATEURS",
     "BATIMENTS",
   ];
+  int count = 0;
 
   @override
   void initState() {
     airluxBloc = AirluxBloc();
-    pages = [
-      favoritesContainer(),
-      sensorsContainer(airluxBloc),
-      scenariosContainer(),
-      usersContainer(),
-      buildingsContainer(),
-    ];
     super.initState();
   }
 
@@ -210,19 +210,24 @@ class HomePageState extends State<HomePage> {
                                     padding: EdgeInsets.only(
                                         left: 0.06 * screenWidth,
                                         right: 0.06 * screenWidth),
-                                    child: Row(children: [
-                                      makeImage("disconnect.png",
-                                          0.03 * screenHeight),
-                                      Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 0.03 * screenWidth),
-                                          child: makeText(
-                                              "Disconnect",
-                                              Colors.black,
-                                              24,
-                                              FontStyle.italic,
-                                              FontWeight.w900)),
-                                    ]),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).popUntil((_) => count++ >= 2);
+                                      },
+                                      child: Row(children: [
+                                        makeImage("disconnect.png",
+                                            0.03 * screenHeight),
+                                        Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 0.03 * screenWidth),
+                                            child: makeText(
+                                                "Déconnexion",
+                                                Colors.black,
+                                                24,
+                                                FontStyle.italic,
+                                                FontWeight.w900)),
+                                      ]),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -245,9 +250,10 @@ class HomePageState extends State<HomePage> {
               child: makeImage("sensors_add.png", screenHeight),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => DevicesScreen(
-                          title: "Appairage",
-                        )));
+                    builder: (context) => const DevicesScreen(
+                      title: "Appairage",
+                    )
+                ));
               },
             )
           : null,

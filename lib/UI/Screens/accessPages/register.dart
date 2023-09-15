@@ -30,7 +30,7 @@ Widget displayRegister(BuildContext context)
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(builder : (context) => HomePage())
             ),
-            child: makeCustomButton(Color(0xFF40A8C4), 5.0, 25.0, 25.0, 5.0, "INSCRIPTION"),
+            child: makeCustomButton(const Color(0xFF40A8C4), 5.0, 25.0, 25.0, 5.0, "INSCRIPTION"),
           ),
         ),
       ],

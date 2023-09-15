@@ -27,12 +27,12 @@ Widget displayLogin(BuildContext context)
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(builder : (context) => HomePage())
               ),
-              child: makeCustomButton(Color(0xFF235784), 25.0, 5.0, 5.0, 25.0, "CONNEXION"),
+              child: makeCustomButton(const Color(0xFF235784), 25.0, 5.0, 5.0, 25.0, "CONNEXION"),
             ),
           ),
         ),
 
-        makeText("Mot de passe oublié ?", Color(0xFF40A8C4), 18, FontStyle.normal, FontWeight.bold),
+        makeText("Mot de passe oublié ?", const Color(0xFF40A8C4), 18, FontStyle.normal, FontWeight.bold),
       ]
     );
 }
