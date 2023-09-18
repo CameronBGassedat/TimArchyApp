@@ -91,8 +91,7 @@ class HomePageState extends State<HomePage> {
                       showModalBottomSheet(
                           backgroundColor: Colors.grey[350],
                           shape: const RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.vertical(top: Radius.circular(60)),
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(60)),
                           ),
                           context: context,
                           builder: (BuildContext context) {
@@ -148,42 +147,96 @@ class HomePageState extends State<HomePage> {
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
                                                       Padding(
-                                                        padding: EdgeInsets.only(bottom: 0.02 * screenHeight),
-                                                        child: makeText(
-                                                          "Adresse IP",
-                                                          Colors.black,
-                                                          20,
-                                                          FontStyle.normal,
-                                                          FontWeight.bold
-                                                        ),
+                                                        padding: EdgeInsets.only(bottom: 0.2 * screenHeight),
+                                                        child: makeFormSizedBox("SSID", "Entrer le SSID du réseau")
                                                       ),
                                                       Padding(
-                                                        padding: EdgeInsets.only(bottom: 0.02 * screenHeight),
-                                                        child: TextField(
-                                                          onChanged: (value) {
-                                                            setState(() {
-                                                              ipValue = value;
-                                                            });
-                                                          },
-                                                          decoration: InputDecoration(
-                                                            hintText: "Entrer l'adresse IP",
-                                                            enabledBorder: OutlineInputBorder(
-                                                              borderRadius: BorderRadius.circular(10.0),
-                                                              borderSide: const BorderSide(width: 2.0),
-                                                            ),
-                                                            focusedBorder: OutlineInputBorder(
-                                                              borderRadius: BorderRadius.circular(10.0),
-                                                              borderSide: const BorderSide(color: Colors.blue, width: 2.0),
+                                                        padding: EdgeInsets.only(bottom: 0.2 * screenHeight),
+                                                        child: makeFormSizedBox("Mot de passe", "Entrer le mot de passe du réseau")
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize: MainAxisSize.max,
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          SizedBox(
+                                                            height: 0.06 * screenHeight,
+                                                            width: 0.06 * screenHeight,
+                                                          ),
+                                                          ElevatedButton(
+                                                            onPressed: () {
+                                                              // SSID & Password Data
+                                                            },
+                                                            style: const ButtonStyle(
+                                                              backgroundColor: MaterialStatePropertyAll(Color(0xFF40A8C4)),
+                                                              padding: MaterialStatePropertyAll(EdgeInsets.only(top: 10.0, right: 15.0, bottom: 10.0, left: 15.0)),
+                                                              ),
+                                                            child: makeText("Valider", Colors.white, 24, FontStyle.normal, FontWeight.bold),
+                                                          ),
+                                                          InkWell(
+                                                            onTap : () {
+                                                              showDialog(
+                                                                context: context,
+                                                                builder: (_) => Dialog(
+                                                                  child: Padding(
+                                                                    padding: const EdgeInsets.all(20.0),
+                                                                    child: Column(
+                                                                      mainAxisSize: MainAxisSize.min,
+                                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsets.only(bottom: 0.02 * screenHeight),
+                                                                          child: makeText(
+                                                                              "Adresse IP",
+                                                                              Colors.black,
+                                                                              20,
+                                                                              FontStyle.normal,
+                                                                              FontWeight.bold
+                                                                          ),
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.only(bottom: 0.02 * screenHeight),
+                                                                          child: TextField(
+                                                                            onChanged: (value) {
+                                                                              setState(() {
+                                                                                ipValue = value;
+                                                                              });
+                                                                            },
+                                                                            decoration: InputDecoration(
+                                                                              hintText: "Entrer l'adresse IP",
+                                                                              enabledBorder: OutlineInputBorder(
+                                                                                borderRadius: BorderRadius.circular(10.0),
+                                                                                borderSide: const BorderSide(width: 2.0),
+                                                                              ),
+                                                                              focusedBorder: OutlineInputBorder(
+                                                                                borderRadius: BorderRadius.circular(10.0),
+                                                                                borderSide: const BorderSide(color: Colors.blue, width: 2.0),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        ElevatedButton(
+                                                                          onPressed: () {
+                                                                            globals.setIp(ipValue);
+                                                                            Navigator.of(context).pop();
+                                                                          },
+                                                                          style: const ButtonStyle(
+                                                                            backgroundColor: MaterialStatePropertyAll(Color(0xFF40A8C4)),
+                                                                            padding: MaterialStatePropertyAll(EdgeInsets.only(top: 10.0, right: 15.0, bottom: 10.0, left: 15.0)),
+                                                                          ),
+                                                                          child: makeText("Valider", Colors.white, 24, FontStyle.normal, FontWeight.bold),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                            child: SizedBox(
+                                                              height: 0.06 * screenHeight,
+                                                              width: 0.06 * screenHeight,
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                      InkWell(
-                                                        onTap: () {
-                                                          globals.setIp(ipValue);
-                                                          Navigator.of(context).pop();
-                                                        },
-                                                        child: makeCustomButton(const Color(0xFF40A8C4), 25.0, 25.0, 25.0, 25.0, "Valider", btnWidth : 0.3 * screenWidth),
+                                                        ],
                                                       )
                                                     ],
                                                   ),

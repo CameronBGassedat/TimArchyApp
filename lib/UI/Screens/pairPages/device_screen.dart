@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:tim_archy_app/UI/Screens/pairPages/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue/flutter_blue.dart';
@@ -80,20 +78,25 @@ class _DevicesScreenState extends State<DevicesScreen> {
         });
       }
     });
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => DeviceInfo(
-                deviceName: device.name,
-              )),
-    );
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text(
+          "Appareil appairé",
+          textAlign: TextAlign.center,
+        ),
+      ),
+      backgroundColor: Colors.green,
+      behavior: SnackBarBehavior.floating,
+      padding: EdgeInsets.all(5.0),
+      width: 150,
+    ));
   }
 
   discoverServices() async {
     if (targetDevice == null) {
       return;
     }
-
     List<BluetoothService> services = await targetDevice.discoverServices();
     services.forEach((service) {
       if (service.uuid.toString() == SERVICE_UID) {
@@ -130,6 +133,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   makeImage("logo_min.png", 0.06 * screenHeight),
+
                   Container(
                     alignment: Alignment.bottomCenter,
                     height: 0.09 * screenHeight,
@@ -139,6 +143,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
                       42,
                       FontStyle.italic,
                       FontWeight.w900)),
+
                   SizedBox(
                     height: 0.06 * screenHeight,
                     width: 0.06 * screenHeight,
@@ -146,6 +151,7 @@ class _DevicesScreenState extends State<DevicesScreen> {
                 ],
               ),
             ),
+
             Flexible(
               child: ListView.builder(
                 itemCount: devices.length,
@@ -157,6 +163,9 @@ class _DevicesScreenState extends State<DevicesScreen> {
                     title: Text(
                         '${devices[index].name} | ${devices[index].state.isBroadcast}'),
                     trailing: ElevatedButton(
+                      style: const ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(Color(0xFF40A8C4)),
+                      ),
                         onPressed: () {
                           if (isConnected == false) {
                             connect(devices[index]);
