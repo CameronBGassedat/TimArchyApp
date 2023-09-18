@@ -4,13 +4,11 @@ import 'package:tim_archy_app/UI/Screens/pairPages/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue/flutter_blue.dart';
-import '../../../Data/my_globals.dart' as globals;
+import 'package:tim_archy_app/Data/my_globals.dart' as globals;
+import 'package:tim_archy_app/UI/Helpers/helper.dart';
 
 class DevicesScreen extends StatefulWidget {
-  const DevicesScreen({super.key, required this.title});
-
-  final String title;
-
+  const DevicesScreen({super.key});
   @override
   State<DevicesScreen> createState() => _DevicesScreenState();
 }
@@ -118,39 +116,71 @@ class _DevicesScreenState extends State<DevicesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: ListView.builder(
-        itemCount: devices.length,
-        // prototypeItem: ListTile(
-        //   title: Text(devices.first),
-        // ),
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-                '${devices[index].name} | ${devices[index].state.isBroadcast}'),
-            trailing: ElevatedButton(
-                onPressed: () {
-                  if (isConnected == false) {
-                    connect(devices[index]);
-                  } else {
-                    disconnect(devices[index]);
-                  }
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(0.05 * screenWidth),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  makeImage("logo_min.png", 0.06 * screenHeight),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    height: 0.09 * screenHeight,
+                    child: makeText(
+                      "APPAIRAGE",
+                      Colors.black,
+                      42,
+                      FontStyle.italic,
+                      FontWeight.w900)),
+                  SizedBox(
+                    height: 0.06 * screenHeight,
+                    width: 0.06 * screenHeight,
+                  ),
+                ],
+              ),
+            ),
+            Flexible(
+              child: ListView.builder(
+                itemCount: devices.length,
+                // prototypeItem: ListTile(
+                //   title: Text(devices.first),
+                // ),
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                        '${devices[index].name} | ${devices[index].state.isBroadcast}'),
+                    trailing: ElevatedButton(
+                        onPressed: () {
+                          if (isConnected == false) {
+                            connect(devices[index]);
+                          } else {
+                            disconnect(devices[index]);
+                          }
+                        },
+                        child: isConnected == false
+                            ? const Text('Connecter')
+                            : const Text('Déconnecter')),
+                  );
                 },
-                child: isConnected == false
-                    ? Text('Connecter')
-                    : Text('Déconnecter')),
-          );
-        },
+              ),
+            ),
+          ],
+        ),
       ),
+
       floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF70bed3),
         onPressed: () {
           startScan();
         },
-        tooltip: 'Search devices',
-        child: const Icon(Icons.search),
+        child: makeImage("search.png", screenHeight),
       ),
     );
   }

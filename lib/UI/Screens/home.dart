@@ -309,13 +309,9 @@ class HomePageState extends State<HomePage> {
           ? FloatingActionButton(
               backgroundColor: const Color(0xFF70bed3),
               child: makeImage("sensors_add.png", screenHeight),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const DevicesScreen(
-                      title: "Appairage",
-                    )
-                ));
-              },
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const DevicesScreen())
+              ),
             ) : null,
     );
   }

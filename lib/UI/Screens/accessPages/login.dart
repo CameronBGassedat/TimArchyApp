@@ -12,7 +12,7 @@ Widget displayLogin(BuildContext context)
       children: [
         Padding(
           padding: EdgeInsets.only(bottom: 0.05 * screenHeight),
-          child: makeFormSizedBox("Nom d'utilisateur", "Entrez votre nom d'utilisateur"),
+          child: makeFormSizedBox("Adresse email", "Entrez votre adresse email"),
         ),
 
         Padding(
@@ -26,7 +26,7 @@ Widget displayLogin(BuildContext context)
             widthFactor: 0.55,
             child: InkWell(
               onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder : (context) => HomePage())
+                MaterialPageRoute(builder : (context) => const HomePage())
               ),
               child: makeCustomButton(const Color(0xFF235784), 25.0, 5.0, 5.0, 25.0, "CONNEXION"),
             ),

@@ -10,12 +10,7 @@ Widget displayRegister(BuildContext context)
     Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(bottom: 0.025 * screenHeight),
-          child: makeFormSizedBox("Nom d'utilisateur", "Entrez votre nom d'utilisateur"),
-        ),
-
-        Padding(
-          padding: EdgeInsets.only(bottom: 0.025 * screenHeight),
+          padding: EdgeInsets.only(bottom: 0.05 * screenHeight),
           child: makeFormSizedBox("Adresse email", "Entrez votre adresse email"),
         ),
 
@@ -28,7 +23,7 @@ Widget displayRegister(BuildContext context)
           widthFactor: 0.55,
           child: InkWell(
             onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder : (context) => HomePage())
+              MaterialPageRoute(builder : (context) => const HomePage())
             ),
             child: makeCustomButton(const Color(0xFF40A8C4), 5.0, 25.0, 25.0, 5.0, "INSCRIPTION"),
           ),
