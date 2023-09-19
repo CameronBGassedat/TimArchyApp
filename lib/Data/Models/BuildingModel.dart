@@ -7,10 +7,10 @@ class Building {
   Building(this.id, this.name, this.clientsID, this.roomsID);
 
   Building.fromJson(Map<String, dynamic> json):
-        id = int.parse(json['id']),
-        name = json['name'] ,
-        clientsID = [int.parse(json['clientsID'])],
-        roomsID = [int.parse(json['roomsID'])];
+    id = int.parse(json['id']),
+    name = json['name'] ,
+    clientsID = [int.parse(json['clientsID'])],
+    roomsID = [int.parse(json['roomsID'])];
 
   Map<String, dynamic> toJson() => {
     'id' : id,

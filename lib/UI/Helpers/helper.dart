@@ -36,7 +36,7 @@ Container makeNavBarContainer(double navBarPaddingLeft, double navBarPaddingRigh
     );
 }
 
-TextField makeTextField(String hintText)
+TextField makeTextField(String hintText, {int? maxLines, void Function(String)? fOnChanged})
 {
   return
     TextField(
@@ -51,10 +51,14 @@ TextField makeTextField(String hintText)
           borderSide: const BorderSide(color: Colors.blue, width: 2.0),
         ),
       ),
+      maxLines: maxLines,
+      onChanged: (value) {
+        fOnChanged!(value);
+      },
     );
 }
 
-FractionallySizedBox makeFormSizedBox(String txtText, String txtFdHintText)
+FractionallySizedBox makeFormSizedBox(String txtText, String txtFdHintText, {int? txtMaxLines, void Function(String)? fTxtFdOnChanged})
 {
   return
     FractionallySizedBox(
@@ -62,19 +66,18 @@ FractionallySizedBox makeFormSizedBox(String txtText, String txtFdHintText)
       child: Column(
         children: [
           makeText(txtText, Colors.black, 26, FontStyle.normal, FontWeight.bold),
-          makeTextField(txtFdHintText),
+          makeTextField(txtFdHintText, maxLines : txtMaxLines, fOnChanged: fTxtFdOnChanged),
         ],
       ),
     );
 }
 
-Container makeCustomButton(Color btnColor, double topLeftRadius, double topRightRadius, double bottomLeftRadius, double bottomRightRadius, String btnText, {double? btnWidth})
+Container makeCustomButton(Color btnColor, double topLeftRadius, double topRightRadius, double bottomLeftRadius, double bottomRightRadius, String btnText)
 {
   return
     Container(
       alignment: Alignment.center,
       height: 60,
-      width: btnWidth,
       decoration: BoxDecoration(
         color: btnColor,
         borderRadius: BorderRadius.only(

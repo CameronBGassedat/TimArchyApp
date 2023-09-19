@@ -18,11 +18,11 @@ class _DevicesScreenState extends State<DevicesScreen> {
   bool isConnected = false;
   List<Widget> characteristicsWidget = <Widget>[];
   late BluetoothDevice targetDevice;
-  //BluetoothCharacteristic targetCharacteristic;
+
+  // BluetoothCharacteristic targetCharacteristic;
   List<BluetoothService> _services = [];
   static const String SERVICE_UID = "4fafc201-1fb5-459e-8fcc-c5c9c331914b";
-  static const String CHARACTERISTIC_UUID =
-      "beb5483e-36e1-4688-b7f5-ea07361b26a8";
+  static const String CHARACTERISTIC_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a8";
 
   // Functions
   void startScan() {
@@ -133,17 +133,11 @@ class _DevicesScreenState extends State<DevicesScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   makeImage("logo_min.png", 0.06 * screenHeight),
-
                   Container(
                     alignment: Alignment.bottomCenter,
                     height: 0.09 * screenHeight,
-                    child: makeText(
-                      "APPAIRAGE",
-                      Colors.black,
-                      42,
-                      FontStyle.italic,
-                      FontWeight.w900)),
-
+                    child: makeText("APPAIRAGE", Colors.black, 42, FontStyle.italic, FontWeight.w900),
+                  ),
                   SizedBox(
                     height: 0.06 * screenHeight,
                     width: 0.06 * screenHeight,
@@ -160,22 +154,20 @@ class _DevicesScreenState extends State<DevicesScreen> {
                 // ),
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(
-                        '${devices[index].name} | ${devices[index].state.isBroadcast}'),
+                    title: Text('${devices[index].name} | ${devices[index].state.isBroadcast}'),
                     trailing: ElevatedButton(
                       style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Color(0xFF40A8C4)),
                       ),
-                        onPressed: () {
-                          if (isConnected == false) {
-                            connect(devices[index]);
-                          } else {
-                            disconnect(devices[index]);
-                          }
-                        },
-                        child: isConnected == false
-                            ? const Text('Connecter')
-                            : const Text('Déconnecter')),
+                      onPressed: () {
+                        if (isConnected == false) {
+                          connect(devices[index]);
+                        } else {
+                          disconnect(devices[index]);
+                        }
+                      },
+                      child: isConnected == false ? const Text('Connecter') : const Text('Déconnecter')
+                    ),
                   );
                 },
               ),

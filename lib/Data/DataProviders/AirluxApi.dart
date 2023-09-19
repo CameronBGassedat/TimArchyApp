@@ -35,11 +35,9 @@ class AirluxApi {
     try {
       var url = Uri.http('10.0.2.2:3000', route);
       http.Response response = await http.post(
-          url,
-          headers: <String, String>{
-            'Content-Type': 'application/json',
-          },
-          body : json.encode(bodymap)
+        url,
+        headers: <String, String>{'Content-Type': 'application/json'},
+        body : json.encode(bodymap)
       );
       if (response.statusCode == 200) {
         result = response.body;

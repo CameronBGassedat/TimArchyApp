@@ -20,7 +20,7 @@ class AirluxRepository {
     List jsonResponse = jsonDecode(responseBody);
 
     var buildings = jsonResponse.map(
-            (item) => Building.fromJson(item)
+      (item) => Building.fromJson(item)
     ).toList();
     return buildings;
   }
@@ -31,7 +31,7 @@ class AirluxRepository {
     List jsonResponse = jsonDecode(responseBody);
 
     var sensors = jsonResponse.map(
-            (item) => Sensor.fromJson(item)
+      (item) => Sensor.fromJson(item)
     ).toList();
     return sensors;
   }
@@ -42,7 +42,7 @@ class AirluxRepository {
     List jsonResponse = jsonDecode(responseBody);
 
     var rooms = jsonResponse.map(
-            (item) => Room.fromJson(item)
+      (item) => Room.fromJson(item)
     ).toList();
     return rooms;
   }
@@ -53,7 +53,7 @@ class AirluxRepository {
     List jsonResponse = jsonDecode(responseBody);
 
     var users = jsonResponse.map(
-            (item) => User.fromJson(item)
+      (item) => User.fromJson(item)
     ).toList();
     return users;
   }

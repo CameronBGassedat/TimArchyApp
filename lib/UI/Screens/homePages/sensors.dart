@@ -45,11 +45,10 @@ Widget sensorsContainer(AirluxBloc airluxBloc) {
                 color: Color(0xFF40A8C4),
                 size: 40,
               ),
-              title:
-                  Text('${sensor.id} ', style: const TextStyle(fontSize: 20)),
+              title: Text('${sensor.id} ', style: const TextStyle(fontSize: 20)),
               subtitle: Text(translate(sensor.capacity)),
               trailing: Text(addUnity(sensor.capacity, sensor.value),
-                  style: const TextStyle(fontSize: 25)),
+                style: const TextStyle(fontSize: 25)),
             ),
           );
         },
@@ -62,7 +61,7 @@ Widget sensorsContainer(AirluxBloc airluxBloc) {
 
 void getData() async {
   http.Response response =
-      await http.get(Uri().resolve('http://' + globals.ip + ':3000/sensor'));
+    await http.get(Uri().resolve('http://' + globals.ip + ':3000/sensor'));
   if (response.statusCode == 200) {
     var sensors = json.decode(response.body);
     Map myMap = sensors;
@@ -78,8 +77,7 @@ void getData() async {
       print(myList[0]['name']);*/
 
       for (int i = 0; i < myList.length; i++) {
-        sensorList.add(Sensor(myList[i]['entityId'], myList[i]['entityId'],
-            myList[i]['value'], myList[i]['capacity']));
+        sensorList.add(Sensor(myList[i]['entityId'], myList[i]['entityId'], myList[i]['value'], myList[i]['capacity']));
       }
       //print(sensorList);
     });
@@ -93,15 +91,15 @@ IconData? selectIcon(String capacity) {
 
   switch (capacity.toLowerCase()) {
     case TEMPERATURE:
-      {
-        capacityIcon = Icons.thermostat;
-        break;
-      }
+    {
+      capacityIcon = Icons.thermostat;
+      break;
+    }
     case HUMIDITY:
-      {
-        capacityIcon = Icons.water_drop;
-        break;
-      }
+    {
+      capacityIcon = Icons.water_drop;
+      break;
+    }
   }
   return capacityIcon;
 }
@@ -109,15 +107,15 @@ IconData? selectIcon(String capacity) {
 String addUnity(String capacity, String value) {
   switch (capacity.toLowerCase()) {
     case TEMPERATURE:
-      {
-        value = value + " °C";
-        break;
-      }
+    {
+      value = value + " °C";
+      break;
+    }
     case HUMIDITY:
-      {
-        value = value + " %";
-        break;
-      }
+    {
+      value = value + " %";
+      break;
+    }
   }
   return value;
 }
@@ -125,15 +123,15 @@ String addUnity(String capacity, String value) {
 String translate(String capacity) {
   switch (capacity.toLowerCase()) {
     case TEMPERATURE:
-      {
-        capacity = "Température";
-        break;
-      }
+    {
+      capacity = "Température";
+      break;
+    }
     case HUMIDITY:
-      {
-        capacity = "Humidité";
-        break;
-      }
+    {
+      capacity = "Humidité";
+      break;
+    }
   }
   return capacity;
 }

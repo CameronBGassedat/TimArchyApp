@@ -61,8 +61,7 @@ class AccessPageState extends State<AccessPage> {
                 ),
               ),
 
-              Flexible(
-                  child : isConnection == true ? displayLogin(context) : displayRegister(context)
+              Flexible(child : isConnection == true ? displayLogin(context) : displayRegister(context)
               ),
             ],
           ),
