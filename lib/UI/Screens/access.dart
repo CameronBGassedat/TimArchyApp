@@ -27,12 +27,41 @@ class AccessPageState extends State<AccessPage> {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF00B8D4),
+                Color(0xFF84FFFF),
+              ]
+            )
+          ),
+          child: Center(
+            child: Column(
+
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: 0.05 * screenHeight, bottom: 0.05 * screenHeight),
-                child: makeImage("logo_max.png", 0.1 * screenHeight),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white, width: 2),
+                  shape: BoxShape.circle
+                ),
+                child: const Icon(Icons.home_outlined, color: Colors.white, size: 100,),
+                ),
+              
+              SizedBox(height: 16.0),
+              RichText(
+                  text: TextSpan(text: "Airlux",
+                    style: TextStyle(
+                      fontSize: 30,
+                      letterSpacing: 2,
+                      color: Colors.white,
+                    )
+                  ),
               ),
+              SizedBox(height: 30.0),
 
               Padding(
                 padding: EdgeInsets.only(bottom: 0.05 * screenHeight),
@@ -46,7 +75,7 @@ class AccessPageState extends State<AccessPage> {
                           isConnection = true;
                         });
                       },
-                      child: makeNavBarContainer(0.0, 0.02 * screenWidth, "Connexion", isConnection == true ? Colors.black : Colors.grey),
+                      child: makeNavBarContainer(0.0, 0.02 * screenWidth, "Connexion", isConnection == true ? Colors.white : Colors.grey),
                     ),
 
                     InkWell(
@@ -55,7 +84,7 @@ class AccessPageState extends State<AccessPage> {
                           isConnection = false;
                         });
                       },
-                      child: makeNavBarContainer(0.02 * screenWidth, 0.0, "Inscription", isConnection == true ? Colors.grey : Colors.black),
+                      child: makeNavBarContainer(0.02 * screenWidth, 0.0, "Inscription", isConnection == true ? Colors.grey : Colors.white),
                     ),
                   ],
                 ),
@@ -66,6 +95,9 @@ class AccessPageState extends State<AccessPage> {
               ),
             ],
           ),
+        ),
+        /**/
+      ),
       ),
     );
   }

@@ -2,7 +2,7 @@ library globals;
 
 String ssid = "ESP32-Airlux";
 String password = "123456789";
-String ip = "10.31.38.171";
+String ip = "10.31.38.207";
 String userEmail = "";
 String userPwd = "";
 

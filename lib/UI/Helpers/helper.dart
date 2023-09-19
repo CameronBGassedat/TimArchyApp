@@ -32,7 +32,7 @@ Container makeNavBarContainer(double navBarPaddingLeft, double navBarPaddingRigh
       alignment: Alignment.center,
       height: 40,
       padding: EdgeInsets.only(left: navBarPaddingLeft, right: navBarPaddingRight),
-      child: makeText(navBarText, navBarTextColor, 26, FontStyle.italic, FontWeight.bold)
+      child: makeText(navBarText, navBarTextColor, 26, FontStyle.italic, FontWeight.bold,)
     );
 }
 
@@ -42,13 +42,14 @@ TextField makeTextField(String hintText)
     TextField(
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: const TextStyle(color: Colors.white, fontStyle: FontStyle.italic),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(width: 2.0),
+          borderRadius: BorderRadius.circular(18.0),
+          borderSide: const BorderSide(color: Colors.white, width: 2.0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(color: Colors.blue, width: 2.0),
+          borderRadius: BorderRadius.circular(18.0),
+          borderSide: const BorderSide(color: Colors.white, width: 2.0),
         ),
       ),
     );
@@ -73,7 +74,7 @@ Container makeCustomButton(Color btnColor, double topLeftRadius, double topRight
   return
     Container(
       alignment: Alignment.center,
-      height: 60,
+      height: 50,
       width: btnWidth,
       decoration: BoxDecoration(
         color: btnColor,
@@ -84,7 +85,7 @@ Container makeCustomButton(Color btnColor, double topLeftRadius, double topRight
           bottomRight: Radius.circular(bottomRightRadius),
         ),
       ),
-      child: makeText(btnText, Colors.white, 24, FontStyle.normal, FontWeight.bold),
+      child: makeText(btnText, Colors.blueGrey, 24, FontStyle.normal, FontWeight.bold),
     );
 }
 
