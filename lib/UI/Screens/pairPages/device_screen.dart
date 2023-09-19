@@ -189,7 +189,8 @@ class _DevicesScreenState extends State<DevicesScreen> {
         onPressed: () {
           startScan();
         },
-        child: makeImage("search.png", screenHeight),
+        child: Icon(Icons.search)
+        //makeImage("search.png", screenHeight),
       ),
     );
   }
