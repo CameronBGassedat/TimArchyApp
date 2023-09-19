@@ -72,8 +72,8 @@ class AirluxBloc {
                     children : [
                       Text("ID : ${sensor.id}"),
                       Text("Sensor Type : ${sensor.name}"),
-                      Text("Value : ${sensor.data}"),
-                      Text("RoomID : ${sensor.roomID}"),
+                      Text("Value : ${sensor.value}"),
+                      Text("Capacity : ${sensor.capacity}"),
                     ]
                   ),
                 );
@@ -95,3 +95,5 @@ class AirluxBloc {
     _sensorsSubject.close();
   }
 }
+
+
